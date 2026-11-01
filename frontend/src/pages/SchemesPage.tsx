@@ -21,10 +21,11 @@ import { useLanguage } from '../context/LanguageContext';
 export const SchemesPage = () => {
   const { t } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialCategory = searchParams.get('cat') || 'all';
+  const initialCategory = searchParams.get('cat') || searchParams.get('category') || 'all';
   const initialState = searchParams.get('state') || 'all';
+  const initialQuery = searchParams.get('q') || '';
 
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [selectedState, setSelectedState] = useState<string>(initialState);
   const [selectedVerification, setSelectedVerification] = useState<string>('all');

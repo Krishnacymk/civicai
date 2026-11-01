@@ -114,7 +114,7 @@ export const GOVERNMENTS: GovernmentConfig[] = [
     regionLabel: 'Bihar',
     shortDescription: 'Kanya Utthan milestone incentives, Student Credit Card education loans, Udyami micro-enterprise grants, and universal old-age social security by the Government of Bihar.',
     fullDescription: 'Saat Nishchay (Seven Resolves) socio-economic development framework delivering student education credit cards up to ₹4 Lakh, girl child graduation awards, entrepreneurship funding, and rural tap water security across Bihar.',
-    officialPortalUrl: 'https://bihar.gov.in',
+    officialPortalUrl: 'https://state.bihar.gov.in',
     officialPortalName: 'Bihar State Portal',
     availableLanguages: ['en', 'hi'],
     isEnabled: true,

@@ -1,0 +1,477 @@
+[
+  {
+    "url": "https://www.india.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 345,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://bihar.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 302,
+    "verdict": "ERROR",
+    "error": "getaddrinfo ENOTFOUND bihar.gov.in"
+  },
+  {
+    "url": "https://cgstate.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 859,
+    "verdict": "ERROR",
+    "error": "Parse Error: Invalid header value char"
+  },
+  {
+    "url": "https://arunachalpradesh.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1242,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://goa.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 301,
+    "latency": 1718,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://assam.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 3622,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://gujaratindia.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 302,
+    "latency": 2880,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://himachal.nic.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 2095,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://haryana.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 301,
+    "latency": 2905,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://jharkhand.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 771,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://mp.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 1060,
+    "verdict": "ERROR",
+    "error": "write EPROTO 74230000:error:0A000152:SSL routines:final_renegotiate:unsafe legacy renegotiation disabled:openssl\\ssl\\statem\\extensions.c:894:\n"
+  },
+  {
+    "url": "https://karnataka.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1351,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://kerala.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1383,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://maharashtra.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1175,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://manipur.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 712,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://mizoram.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1424,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://meghalaya.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1695,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://punjab.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 685,
+    "verdict": "ERROR",
+    "error": "write EPROTO 74230000:error:0A000152:SSL routines:final_renegotiate:unsafe legacy renegotiation disabled:openssl\\ssl\\statem\\extensions.c:894:\n"
+  },
+  {
+    "url": "https://rajasthan.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 924,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://sikkim.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 301,
+    "latency": 1643,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://ap.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 10000,
+    "verdict": "TIMEOUT"
+  },
+  {
+    "url": "https://www.telangana.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1379,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://nagaland.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 5421,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://up.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 393,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://odisha.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 5198,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://tripura.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1659,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://uk.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 1161,
+    "verdict": "ERROR",
+    "error": "write EPROTO 74230000:error:0A000152:SSL routines:final_renegotiate:unsafe legacy renegotiation disabled:openssl\\ssl\\statem\\extensions.c:894:\n"
+  },
+  {
+    "url": "https://chandigarh.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 758,
+    "verdict": "ERROR",
+    "error": "unable to verify the first certificate; if the root CA is installed locally, try running Node.js with --use-system-ca"
+  },
+  {
+    "url": "https://daman.nic.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 543,
+    "verdict": "ERROR",
+    "error": "unable to verify the first certificate; if the root CA is installed locally, try running Node.js with --use-system-ca"
+  },
+  {
+    "url": "https://delhi.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1303,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://ladakh.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 768,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://www.tn.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 7792,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://lakshadweep.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 1279,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://sspensions.ap.gov.in",
+    "sources": [
+      "pages\\LandingPage.tsx"
+    ],
+    "types": [
+      "href"
+    ],
+    "status": 302,
+    "latency": 2310,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://india.gov.in",
+    "sources": [
+      "components\\common\\Footer.tsx"
+    ],
+    "types": [
+      "href"
+    ],
+    "status": 302,
+    "latency": 320,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://wb.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 8492,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://andaman.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 10000,
+    "verdict": "TIMEOUT"
+  },
+  {
+    "url": "https://py.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": 200,
+    "latency": 7160,
+    "verdict": "OK"
+  },
+  {
+    "url": "https://jk.gov.in",
+    "sources": [
+      "data/governments.ts"
+    ],
+    "types": [
+      "officialPortalUrl"
+    ],
+    "status": null,
+    "latency": 10000,
+    "verdict": "TIMEOUT"
+  }
+]
