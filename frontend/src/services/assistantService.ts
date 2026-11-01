@@ -1,5 +1,6 @@
 import type { Scheme } from '../types/scheme';
 import { SCHEMES } from '../data/schemes';
+import { GOVERNMENTS } from '../data/governments';
 import type { LanguageCode } from '../i18n/types';
 
 export interface AssistantMessage {
@@ -95,6 +96,21 @@ function generateLocalDemonstrationResponse(
     q.includes('thalliki') || q.includes('sukhibhava') || q.includes('aarogyasri') || q.includes('ఆంధ్రప్రదేశ్') || 
     q.includes('ఆంధ్ర') || q.includes('భరోసా') || q.includes('తల్లికి వందనం') || q.includes('అన్నదాత సుఖీభవ') || 
     q.includes('ఆరోగ్యశ్రీ') || q.includes('ஆந்திர');
+
+  // Any other Indian State or Union Territory from all 37 jurisdictions
+  const otherGov = GOVERNMENTS.find(g => {
+    if (g.level === 'central') return false;
+    if (g.id === 'andhra-pradesh' || g.id === 'telangana' || g.id === 'tamil-nadu') return false;
+    if (targetGovernment === g.slug || targetGovernment === g.id) return true;
+    const gName = g.name.toLowerCase();
+    if (q.includes(gName)) return true;
+    if (g.stateCode && new RegExp(`\\b${g.stateCode.toLowerCase()}\\b`).test(q)) return true;
+    if (g.capitalCity && q.includes(g.capitalCity.toLowerCase())) return true;
+    if (g.hindiName && q.includes(g.hindiName)) return true;
+    if (g.teluguName && q.includes(g.teluguName)) return true;
+    if (g.tamilName && q.includes(g.tamilName)) return true;
+    return false;
+  });
 
   // Categorical intent detection across English, Hindi, Telugu, and Tamil
   const isDisability = q.includes('disab') || q.includes('pwd') || q.includes('handicap') || q.includes('sadarem') || 
@@ -213,37 +229,60 @@ function generateLocalDemonstrationResponse(
     const apFarm = findScheme('ap-annadata-sukhibhava');
     const apSchool = findScheme('ap-thalliki-vandanam');
     const apHealth = findScheme('ap-ntr-aarogyasri');
+    const apDwcra = findScheme('ap-dwcra-cheyutha');
     if (apDis) matchedSchemes.push(apDis);
     if (apFarm) matchedSchemes.push(apFarm);
     if (apSchool) matchedSchemes.push(apSchool);
     if (apHealth) matchedSchemes.push(apHealth);
+    if (apDwcra) matchedSchemes.push(apDwcra);
 
     if (language === 'hi') {
-      answerText = `आंध्र प्रदेश सरकार की चार प्रमुख कल्याणकारी योजनाएं:\n\n1. **एनटीआर भरोसा सामाजिक सुरक्षा पेंशन**: वृद्धों/विधवाओं को ₹4,00,00/माह, दिव्यांगों को ₹6,000 से ₹15,000/माह।\n2. **तल्लिकी वंदनम**: कक्षा 1 से 12 तक पढ़ने वाले प्रत्येक बच्चे की माँ को **₹15,000 प्रति वर्ष** की सीधी सहायता (75% उपस्थिति अनिवार्य)।\n3. **अन्नदाता सुखीभव**: किसानों और पट्टेदार किसानों (CCRC) को **₹20,000 प्रति वर्ष** (₹14,000 राज्य + ₹6,000 पीएम-किसान)।\n4. **डॉ. एनटीआर आरोग्यश्री**: पात्र परिवारों को **₹25,00,000 प्रति वर्ष** तक का कैशलेस इलाज 3,257 प्रक्रियाओं में।`;
+      answerText = `आंध्र प्रदेश सरकार की पांच प्रमुख कल्याणकारी योजनाएं:\n\n1. **एनटीआर भरोसा सामाजिक सुरक्षा पेंशन**: वृद्धों/विधवाओं को ₹4,000/माह, दिव्यांगों को ₹6,000 से ₹15,000/माह।\n2. **तल्लिकी वंदनम**: कक्षा 1 से 12 तक पढ़ने वाले प्रत्येक बच्चे की माँ को **₹15,000 प्रति वर्ष** की सीधी सहायता।\n3. **अन्नदाता सुखीभव**: किसानों और पट्टेदार किसानों (CCRC) को **₹20,000 प्रति वर्ष** (₹14,000 राज्य + ₹6,000 पीएम-किसान)।\n4. **डॉ. एनटीआर आरोग्यश्री**: पात्र परिवारों को **₹25,00,000 प्रति वर्ष** तक का कैशलेस इलाज।\n5. **वाईएसआर / एपी चेयुता (DWCRA)**: 45-60 वर्ष की महिलाओं को आजीविका हेतु **₹18,750 प्रति वर्ष** (कुल ₹75,000)।`;
       missingEvidence.push('क्या आपके पास आंध्र प्रदेश का सफेद राशन कार्ड या चावल कार्ड (Rice Card) है?');
       missingEvidence.push('क्या आपका परिवार आंध्र प्रदेश ग्राम या वार्ड सचिवालय में पंजीकृत है?');
       followUps.push('ग्राम सचिवालय में तल्लिकी वंदनम की स्थिति कैसे जांचें?');
       followUps.push('अन्नदाता सुखीभव के लिए पट्टेदार किसान (CCRC) कार्ड कैसे बनवाएं?');
       followUps.push('डॉ. एनटीआर आरोग्यश्री से संबद्ध अस्पतालों की सूची');
     } else if (language === 'te') {
-      answerText = `ఆంధ్రప్రదేశ్ రాష్ట్ర ప్రభుత్వం అమలు చేస్తున్న ప్రముఖ సంక్షేమ పథకాలు:\n\n1. **ఎన్టీఆర్ భరోసా సామాజిక పింఛన్లు**: వృద్ధులు, వితంతువులు, చేనేత కార్మికులకు **₹4,000/నెల**; దివ్యాంగులకు **₹6,000 నుండి ₹15,000/నెల**.\n\n2. **తల్లికి వందనం**: 1 నుండి 12వ తరగతి వరకు చదువుతున్న ప్రతి బిడ్డకు తల్లి ఖాతాలో ఏడాదికి **₹15,000** (పాఠశాలలో 75% హాజరు తప్పనిసరి).\n\n3. **అన్నదాత సుఖీభవ**: అర్హులైన రైతులకు మరియు కౌలు రైతులకు (CCRC) ఏడాదికి **₹20,000** పెట్టుబడి సాయం (రాష్ట్ర ప్రభుత్వం ₹14,000 + పీఎం-కిసాన్ ₹6,000).\n\n4. **డా. ఎన్టీఆర్ ఆరోగ్యశ్రీ**: తెల్ల రేషన్ కార్డు ఉన్న కుటుంబాలకు 3,257 వైద్య ప్రక్రియలకు ఏడాదికి **₹25 లక్షల వరకు ఉచిత నగదు రహిత చికిత్స**.`;
+      answerText = `ఆంధ్రప్రదేశ్ రాష్ట్ర ప్రభుత్వం అమలు చేస్తున్న 5 ప్రముఖ సంక్షేమ పథకాలు:\n\n1. **ఎన్టీఆర్ భరోసా సామాజిక పింఛన్లు**: వృద్ధులు, వితంతువులకు **₹4,000/నెల**; దివ్యాంగులకు **₹6,000 నుండి ₹15,000/నెల**.\n2. **తల్లికి వందనం**: 1 నుండి 12వ తరగతి వరకు చదువుతున్న ప్రతి బిడ్డకు తల్లి ఖాతాలో ఏడాదికి **₹15,000**.\n3. **అన్నదాత సుఖీభవ**: అర్హులైన రైతులకు మరియు కౌలు రైతులకు (CCRC) ఏడాదికి **₹20,000** పెట్టుబడి సాయం (రాష్ట్రం ₹14,000 + పీఎం-కిసాన్ ₹6,000).\n4. **డా. ఎన్టీఆర్ ఆరోగ్యశ్రీ**: తెల్ల రేషన్ కార్డు ఉన్న కుటుంబాలకు ఏడాదికి **₹25 లక్షల వరకు ఉచిత నగదు రహిత చికిత్స**.\n5. **వైఎస్సార్ / ఏపీ చేయూత (DWCRA)**: 45-60 ఏళ్ల మహిళలకు జీవనోపాధి కోసం ఏడాదికి **₹18,750 (4 ఏళ్లలో ₹75,000)**.`;
       missingEvidence.push('నిర్ధారణ అవసరం: మీ కుటుంబానికి ఆంధ్రప్రదేశ్ ప్రభుత్వం జారీ చేసిన రైస్ కార్డ్ (White Ration Card) ఉందా?');
       missingEvidence.push('మీరు సమీప గ్రామ లేదా వార్డు సచివాలయాన్ని సంప్రదించారా?');
       followUps.push('గ్రామ సచివాలయంలో తల్లికి వందనం లబ్ధిదారుల జాబితా ఎలా చూడాలి?');
       followUps.push('కౌలు రైతులకు అన్నదాత సుఖీభవ వర్తిస్తుందా?');
       followUps.push('డా. ఎన్టీఆర్ ఆరోగ్యశ్రీ కింద ఏయే చికిత్సలు ఉచితం?');
     } else if (language === 'ta') {
-      answerText = `ஆந்திரப் பிரதேச மாநிலத்தின் முக்கிய நலத்திட்டங்கள்:\n\n1. **என்டிஆர் பரோசா ஓய்வூதியம்**: முதியோர்/விதவைகளுக்கு ₹4,000/மாதம், மாற்றுத்திறனாளிகளுக்கு ₹6,000 - ₹15,000/மாதம்.\n2. **தல்லிகி வந்தனம்**: 1 முதல் 12-ம் வகுப்பு வரை படிக்கும் குழந்தையின் தாய்க்கு ஆண்டுக்கு **₹15,000** நிதியுதவி.\n3. **அன்னதாதா சுகீபவா**: விவசாயிகளுக்கு ஆண்டுக்கு **₹20,000** முதலீட்டு உதவி (மாநில அரசு ₹14,000 + பிஎம்-கிசான் ₹6,000).\n4. **டாக்டர் என்டிஆர் ஆரோக்கியஸ்ரீ**: குடும்பத்திற்கு ஆண்டுக்கு **₹25 லட்சம் வரை** கட்டணமில்லா மருத்துவச் சிகிச்சை.`;
+      answerText = `ஆந்திரப் பிரதேச மாநிலத்தின் 5 முக்கிய நலத்திட்டங்கள்:\n\n1. **என்டிஆர் பரோசா ஓய்வூதியம்**: முதியோர்/விதவைகளுக்கு ₹4,00/மாதம், மாற்றுத்திறனாளிகளுக்கு ₹6,000 - ₹15,000/மாதம்.\n2. **தல்லிகி வந்தனம்**: பள்ளி செல்லும் குழந்தையின் தாய்க்கு ஆண்டுக்கு **₹15,000** நிதியுதவி.\n3. **அன்னதாதா சுகீபவா**: விவசாயிகளுக்கு ஆண்டுக்கு **₹20,000** முதலீட்டு உதவி.\n4. **டாக்டர் என்டிஆர் ஆரோக்கியஸ்ரீ**: குடும்பத்திற்கு ஆண்டுக்கு **₹25 லட்சம் வரை** கட்டணமில்லா மருத்துவச் சிகிச்சை.\n5. **ஆந்திரா செய்யூதா**: பெண்களுக்கு ஆண்டுக்கு **₹18,750** வாழ்வாதார நிதியுதவி.`;
       missingEvidence.push('ஆந்திராவின் அரிசி அட்டை (Rice Card) உள்ளதா?');
       followUps.push('கிராம செயலகத்தில் எவ்வாறு பதிவு செய்வது?');
     } else {
-      answerText = `Key flagship government schemes of **Andhra Pradesh**:\n\n1. **NTR Bharosa Social Security Pension**: ₹4,000/month for Old Age & Widows; ₹6,000 to ₹15,000/month for Persons with Disabilities depending on severity.\n\n2. **Thalliki Vandanam**: Direct transfer of **₹15,000 per year per school-going child** (Class 1–12) into the verified mother\\'s bank account, subject to 75% school attendance.\n\n3. **Annadata Sukhibhava**: Total farmer investment support of **₹20,000 per year** (combining ₹14,000 AP State Assistance + ₹6,000 PM-KISAN), inclusive of certified tenant farmers holding CCRC.\n\n4. **Dr. NTR Aarogyasri**: Comprehensive cashless hospitalization up to **₹25 Lakhs per family per year** across 3,257 listed secondary and tertiary procedures for BPL Rice Card holders.`;
+      answerText = `Key flagship government schemes of **Andhra Pradesh**:\n\n1. **NTR Bharosa Social Security Pension**: ₹4,000/month for Old Age & Widows; ₹6,000 to ₹15,000/month for Persons with Disabilities depending on severity.\n\n2. **Thalliki Vandanam**: Direct transfer of **₹15,000 per year per school-going child** (Class 1–12) into the verified mother\\'s bank account, subject to 75% school attendance.\n\n3. **Annadata Sukhibhava**: Total farmer investment support of **₹20,000 per year** (combining ₹14,000 AP State Assistance + ₹6,000 PM-KISAN), inclusive of certified tenant farmers holding CCRC.\n\n4. **Dr. NTR Aarogyasri**: Comprehensive cashless hospitalization up to **₹25 Lakhs per family per year** across 3,257 listed secondary and tertiary procedures for BPL Rice Card holders.\n\n5. **YSR / AP Cheyutha (DWCRA Women Livelihoods)**: Direct assistance of **₹18,750 per year** (total ₹75,000 across 4 years) for women aged 45–60 from SC, ST, BC, and minority communities for sustainable livelihood ventures.`;
       missingEvidence.push('Do you possess an active Andhra Pradesh Rice Card / BPL Food Security Card?');
       missingEvidence.push('Is your household mapped to your local Village/Ward Secretariat (Grama/Ward Sachivalayam)?');
       followUps.push('How to apply for Thalliki Vandanam at Grama Sachivalayam?');
       followUps.push('How can tenant farmers register with CCRC for Annadata Sukhibhava?');
       followUps.push('Check Dr. NTR Aarogyasri hospital network and coverage');
     }
+  }
+
+  // 4. ANY OTHER INDIAN STATE OR UNION TERRITORY BRANCH (28 States & 8 UTs)
+  else if (otherGov) {
+    const govSchemes = SCHEMES.filter(s => s.stateCode === otherGov.stateCode);
+    govSchemes.forEach(s => matchedSchemes.push(s));
+
+    const isUT = otherGov.jurisdictionType === 'union-territory';
+    const govTypeLabel = isUT ? 'Union Territory' : 'State';
+
+    answerText = `Key flagship welfare programs administered by the **${otherGov.name}** (${govTypeLabel} Portal, Capital: ${otherGov.capitalCity}):\n\n` +
+      govSchemes.map((s, idx) => 
+        `${idx + 1}. **${s.name}**\n   • **Official Statutory Benefit**: **${s.financialBenefit}**\n   • **Target Beneficiaries**: ${s.beneficiaries.join(', ')}\n   • **Essential Documents**: ${s.requiredDocuments.slice(0, 3).join(', ')}\n   • **Summary**: ${s.shortSummary}`
+      ).join('\n\n') +
+      `\n\nOfficial Portal: [${otherGov.officialPortalName}](${otherGov.officialPortalUrl}) • Citizen Helpline: **${otherGov.helpline}**`;
+
+    missingEvidence.push(`Do you hold permanent residency or domicile proof for ${otherGov.name}?`);
+    missingEvidence.push(`Do you have an active state ration card or income certificate issued in ${otherGov.name}?`);
+    followUps.push(`What are the documents needed for ${govSchemes[0]?.name || otherGov.name}?`);
+    followUps.push(`Visit official portal for ${otherGov.name}`);
+    followUps.push(`Show Central Government schemes also available in ${otherGov.name}`);
   }
 
   // 4. DISABILITY / PwD INTENT
@@ -363,25 +402,29 @@ function generateLocalDemonstrationResponse(
     followUps.push('What are the contribution slabs for PM-SYM?');
   }
 
-  // 10. DEFAULT / GENERAL DISCOVERY
+  // 10. DEFAULT / GENERAL DISCOVERY (All 37 Jurisdictions & 205 Schemes)
   else {
     const sampleCentral = findScheme('pm-jay');
     const sampleAP = findScheme('ap-ntr-bharosa-disability');
     const sampleTG = findScheme('tg-rythu-bharosa');
     const sampleTN = findScheme('tn-kmut-women-basic-income');
+    const sampleMH = findScheme('mh-mukhyamantri-majhi-ladki-bahin');
+    const sampleDL = findScheme('dl-delhi-ladli-scheme');
 
     if (sampleCentral) matchedSchemes.push(sampleCentral);
     if (sampleAP) matchedSchemes.push(sampleAP);
     if (sampleTG) matchedSchemes.push(sampleTG);
     if (sampleTN) matchedSchemes.push(sampleTN);
+    if (sampleMH) matchedSchemes.push(sampleMH);
+    if (sampleDL) matchedSchemes.push(sampleDL);
 
-    answerText = `CivicAI helps you discover and navigate India\\'s **39 verified public welfare schemes** across four government jurisdictions:\n\n• **Central Government (India)**: 25 National schemes (PM-KISAN, Ayushman Bharat, PM-MUDRA, PM Surya Ghar)\n• **Andhra Pradesh State Government**: 4 Flagship schemes (NTR Bharosa, Annadata Sukhibhava, Thalliki Vandanam, Aarogyasri)\n• **Telangana State Government**: 5 Guaranteed schemes (Rythu Bharosa, Aasara Pension, Rajiv Aarogyasri, Mahalakshmi, Gruha Jyothi)\n• **Tamil Nadu State Government**: 5 Flagship schemes (KMUT ₹1,000/mo, Pudhumai Penn, CMCHIS, Naan Mudhalvan)\n\nWhich government section or welfare benefit would you like to explore?`;
+    answerText = `CivicAI helps you discover and navigate India\\'s **${SCHEMES.length} verified public welfare schemes** across all 37 government jurisdictions:\n\n• **Central Government (Government of India)**: 25 Flagship national schemes (PM-KISAN, Ayushman Bharat, PM-MUDRA, PM Surya Ghar, etc.)\n• **28 State Governments**: 140 State-administered welfare programs (5 verified schemes each across Andhra Pradesh, Telangana, Tamil Nadu, Maharashtra, Uttar Pradesh, Bihar, Karnataka, West Bengal, and all 28 states)\n• **8 Union Territories**: 40 Union Territory welfare programs (5 verified schemes each across Delhi, Jammu & Kashmir, Ladakh, Puducherry, Chandigarh, Andaman & Nicobar, Dadra & Nagar Haveli and Daman & Diu, and Lakshadweep)\n\nWhich government portal, state, or welfare category would you like to explore?`;
 
-    missingEvidence.push('Your target government or state residence (Central, Andhra Pradesh, Telangana, or Tamil Nadu)');
-    missingEvidence.push('Your primary citizen category (Student, Farmer, Woman, PwD, Worker, Senior)');
-    followUps.push('Tell me about Telangana Rythu Bharosa and Aasara pensions');
-    followUps.push('What are the Tamil Nadu KMUT and Pudhumai Penn schemes?');
-    followUps.push('Show me Andhra Pradesh NTR Bharosa disability pensions');
+    missingEvidence.push('Your target government or state/UT residence (e.g. Central, Andhra Pradesh, Telangana, Tamil Nadu, Delhi, Maharashtra, Bihar, etc.)');
+    missingEvidence.push('Your primary citizen category (Student, Farmer, Woman, PwD, Worker, Senior Citizen, Artisan)');
+    followUps.push('Tell me about schemes in Delhi');
+    followUps.push('What schemes are available in Maharashtra?');
+    followUps.push('Show me Telangana Rythu Bharosa and Aasara pensions');
     followUps.push('How does Central PM Surya Ghar rooftop solar subsidy work?');
   }
 

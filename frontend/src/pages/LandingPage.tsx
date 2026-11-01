@@ -250,7 +250,7 @@ export const LandingPage = () => {
                     onClick={() => navigate('/schemes/andhra-pradesh')}
                     className="px-2 py-0.5 rounded bg-[#EBF2ED] dark:bg-[#1A2E22] hover:bg-[#DDE9E0] text-[11px] font-semibold text-[#1A3B2B] dark:text-[#7A9984] border border-[#C5DAC9] dark:border-[#253D30] transition-colors"
                   >
-                    Andhra Pradesh (4)
+                    Andhra Pradesh (5)
                   </button>
                   <button
                     type="button"

@@ -13,7 +13,8 @@ import {
   AlertTriangle,
   Building2
 } from 'lucide-react';
-import { SCHEMES, CATEGORIES, STATES_CONFIG } from '../data/schemes';
+import { SCHEMES, CATEGORIES } from '../data/schemes';
+import { GOVERNMENTS } from '../data/governments';
 import { GovernmentSectionNav } from '../components/schemes/GovernmentSectionNav';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -59,21 +60,22 @@ export const SchemesPage = () => {
       }
 
       // State / Government matching
-      if (selectedState === 'central' || selectedState === 'Central') {
-        if (scheme.governmentLevel !== 'central') {
-          return false;
-        }
-      } else if (selectedState === 'Andhra Pradesh' || selectedState === 'AP') {
-        if (scheme.stateCode !== 'AP' && scheme.governmentLevel !== 'central') {
-          return false;
-        }
-      } else if (selectedState === 'Telangana' || selectedState === 'TG') {
-        if (scheme.stateCode !== 'TG' && scheme.governmentLevel !== 'central') {
-          return false;
-        }
-      } else if (selectedState === 'Tamil Nadu' || selectedState === 'TN') {
-        if (scheme.stateCode !== 'TN' && scheme.governmentLevel !== 'central') {
-          return false;
+      if (selectedState !== 'all') {
+        if (selectedState === 'central' || selectedState === 'Central') {
+          if (scheme.governmentLevel !== 'central') {
+            return false;
+          }
+        } else {
+          const targetGov = GOVERNMENTS.find(g => 
+            g.stateCode === selectedState || 
+            g.name.toLowerCase() === selectedState.toLowerCase() ||
+            g.slug === selectedState.toLowerCase() ||
+            g.id === selectedState
+          );
+          const targetCode = targetGov?.stateCode || selectedState;
+          if (scheme.stateCode !== targetCode && scheme.governmentLevel !== 'central') {
+            return false;
+          }
         }
       }
 
@@ -146,23 +148,66 @@ export const SchemesPage = () => {
             </div>
 
             {/* State Jurisdiction Switcher Pill */}
-            <div className="flex items-center gap-1.5 bg-[#FAF8F5] dark:bg-[#121614] border border-[#D5CABE] dark:border-[#2C352F] p-1 rounded-lg">
+            <div className="flex flex-wrap items-center gap-1.5 bg-[#FAF8F5] dark:bg-[#121614] border border-[#D5CABE] dark:border-[#2C352F] p-1 rounded-lg">
               <MapPin className="w-3.5 h-3.5 text-[#B95938] dark:text-[#DFB24E] ml-1.5 shrink-0" />
               <span className="text-[11px] font-semibold text-[#565C56] dark:text-[#C5CDC6] pr-1">Jurisdiction:</span>
-              {STATES_CONFIG.map(st => (
-                <button
-                  key={st.id}
-                  type="button"
-                  onClick={() => handleStateChange(st.id)}
-                  className={`px-2.5 py-1 rounded text-[11px] font-medium transition-all ${
-                    selectedState === st.id
-                      ? 'bg-[#1A3B2B] dark:bg-[#24583F] text-white shadow-2xs font-semibold'
-                      : 'text-[#565C56] dark:text-[#A3ACA5] hover:text-[#161815] dark:hover:text-white'
+              <button
+                type="button"
+                onClick={() => handleStateChange('all')}
+                className={`px-2.5 py-1 rounded text-[11px] font-medium transition-all ${
+                  selectedState === 'all'
+                    ? 'bg-[#1A3B2B] dark:bg-[#24583F] text-white shadow-2xs font-semibold'
+                    : 'text-[#565C56] dark:text-[#A3ACA5] hover:text-[#161815] dark:hover:text-white'
+                }`}
+              >
+                All India ({SCHEMES.length})
+              </button>
+              <button
+                type="button"
+                onClick={() => handleStateChange('central')}
+                className={`px-2.5 py-1 rounded text-[11px] font-medium transition-all ${
+                  selectedState === 'central'
+                    ? 'bg-[#1A3B2B] dark:bg-[#24583F] text-white shadow-2xs font-semibold'
+                    : 'text-[#565C56] dark:text-[#A3ACA5] hover:text-[#161815] dark:hover:text-white'
+                }`}
+              >
+                Central (25)
+              </button>
+              <div className="relative inline-flex items-center">
+                <select
+                  value={selectedState !== 'all' && selectedState !== 'central' ? selectedState : ''}
+                  onChange={(e) => handleStateChange(e.target.value || 'all')}
+                  className={`pl-2 pr-6 py-1 rounded text-[11px] font-medium appearance-none border transition-all cursor-pointer ${
+                    selectedState !== 'all' && selectedState !== 'central'
+                      ? 'bg-[#1A3B2B] dark:bg-[#24583F] text-white border-[#1A3B2B] dark:border-[#24583F] font-semibold'
+                      : 'bg-white dark:bg-[#181D1A] text-[#565C56] dark:text-[#A3ACA5] border-[#D5CABE] dark:border-[#2C352F] hover:border-[#1A3B2B]'
                   }`}
+                  aria-label="Select State or Union Territory"
                 >
-                  {st.id === 'all' ? 'All India' : st.id === 'Andhra Pradesh' ? 'Andhra Pradesh' : 'Central Only'}
-                </button>
-              ))}
+                  <option value="" className="text-[#161815] dark:text-[#F3EFEA] bg-white dark:bg-[#181D1A]">
+                    {selectedState !== 'all' && selectedState !== 'central' 
+                      ? GOVERNMENTS.find(g => g.stateCode === selectedState || g.slug === selectedState)?.name || selectedState
+                      : 'States & UTs (36)...'}
+                  </option>
+                  <optgroup label="28 States (140 Schemes)" className="text-[#161815] dark:text-[#F3EFEA] bg-white dark:bg-[#181D1A]">
+                    {GOVERNMENTS.filter(g => g.jurisdictionType === 'state').map(g => (
+                      <option key={g.id} value={g.stateCode || g.slug}>
+                        {g.name} ({g.stateCode})
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="8 Union Territories (40 Schemes)" className="text-[#161815] dark:text-[#F3EFEA] bg-white dark:bg-[#181D1A]">
+                    {GOVERNMENTS.filter(g => g.jurisdictionType === 'union-territory').map(g => (
+                      <option key={g.id} value={g.stateCode || g.slug}>
+                        {g.name} ({g.stateCode})
+                      </option>
+                    ))}
+                  </optgroup>
+                </select>
+                <div className="pointer-events-none absolute right-1.5 flex items-center">
+                  <span className="text-[9px] opacity-70">▼</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -277,6 +322,45 @@ export const SchemesPage = () => {
                   {t('schemes.clearAll')}
                 </button>
               )}
+            </div>
+
+            {/* Government Jurisdiction Filter */}
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-[#161815] dark:text-[#F3EFEA] flex items-center justify-between">
+                <span>Government Jurisdiction</span>
+                {selectedState !== 'all' && (
+                  <button
+                    type="button"
+                    onClick={() => handleStateChange('all')}
+                    className="text-[10px] text-[#B95938] dark:text-[#DFB24E] hover:underline"
+                  >
+                    Reset
+                  </button>
+                )}
+              </label>
+              <select
+                value={selectedState}
+                onChange={e => handleStateChange(e.target.value)}
+                className="w-full bg-[#FAF8F5] dark:bg-[#121614] border border-[#D5CABE] dark:border-[#2C352F] rounded-md px-2.5 py-1.5 text-xs text-[#161815] dark:text-[#F3EFEA] focus:outline-none focus:ring-1 focus:ring-[#1A3B2B]"
+                aria-label="Filter by Government Jurisdiction"
+              >
+                <option value="all">All India ({SCHEMES.length} Schemes)</option>
+                <option value="central">Central Government (25 Schemes)</option>
+                <optgroup label="28 States (140 Schemes)">
+                  {GOVERNMENTS.filter(g => g.jurisdictionType === 'state').map(g => (
+                    <option key={g.id} value={g.stateCode || g.slug}>
+                      {g.name} ({g.stateCode})
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="8 Union Territories (40 Schemes)">
+                  {GOVERNMENTS.filter(g => g.jurisdictionType === 'union-territory').map(g => (
+                    <option key={g.id} value={g.stateCode || g.slug}>
+                      {g.name} ({g.stateCode})
+                    </option>
+                  ))}
+                </optgroup>
+              </select>
             </div>
 
             {/* Verification Status Filter */}

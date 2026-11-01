@@ -133,7 +133,7 @@ export const Navbar = () => {
                   >
                     <div>
                       <div className="font-semibold text-[#161815] dark:text-[#F3EFEA]">Andhra Pradesh</div>
-                      <div className="text-[10px] text-[#858D85]">Amaravati • 4 Schemes</div>
+                      <div className="text-[10px] text-[#858D85]">Amaravati • 5 Schemes</div>
                     </div>
                     <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#EBF2ED] text-[#1A3B2B]">AP</span>
                   </Link>
@@ -168,7 +168,7 @@ export const Navbar = () => {
                       onClick={() => setSchemesDropdownOpen(false)}
                       className="flex items-center justify-between px-3 py-2 text-xs text-[#1A3B2B] dark:text-[#DFB24E] font-semibold hover:bg-[#FAF8F5] dark:hover:bg-[#232A25] transition-colors"
                     >
-                      <span>All 39 Unified Schemes</span>
+                      <span>All 205 Schemes (37 Portals)</span>
                       <span>→</span>
                     </Link>
                   </div>
@@ -391,7 +391,7 @@ export const Navbar = () => {
                 className="flex items-center justify-between px-3 py-1.5 rounded text-xs text-[#565C56] dark:text-[#A3ACA5] hover:bg-[#EFE8DE] dark:hover:bg-[#181D1A]"
               >
                 <span>Andhra Pradesh</span>
-                <span className="font-mono text-[10px] px-1.5 py-0.2 rounded bg-[#EBF2ED] text-[#1A3B2B]">AP • 4</span>
+                <span className="font-mono text-[10px] px-1.5 py-0.2 rounded bg-[#EBF2ED] text-[#1A3B2B]">AP • 5</span>
               </Link>
               <Link
                 to="/schemes/telangana"

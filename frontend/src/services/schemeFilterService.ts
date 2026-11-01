@@ -1,12 +1,13 @@
 import type { Scheme, SchemeCategory, SchemeOperationalStatus } from '../types/scheme';
-import type { GovernmentId, StateCode } from '../types/government';
+import type { GovernmentId, StateCode, GovernmentLevel, JurisdictionType } from '../types/government';
 import { SCHEMES } from '../data/schemes';
 import { GOVERNMENTS, getGovernmentBySlug } from '../data/governments';
 
 export interface GovernmentStats {
   governmentId: GovernmentId | string;
   name: string;
-  level: 'central' | 'state';
+  level: GovernmentLevel;
+  jurisdictionType?: JurisdictionType;
   stateCode: StateCode | null;
   schemeCount: number;
   verifiedCount: number;
@@ -17,6 +18,7 @@ export interface CatalogSummary {
   totalSchemes: number;
   centralCount: number;
   stateCount: number;
+  utCount: number;
   governmentBreakdown: Record<string, number>;
 }
 
@@ -29,21 +31,28 @@ export function getCentralSchemes(schemes: Scheme[] = SCHEMES): Scheme[] {
 }
 
 /**
- * Returns all schemes strictly administered by a specific state government by state code.
- * State schemes must have governmentLevel === 'state' and stateCode === requested stateCode.
+ * Returns all schemes strictly administered by a specific state government or UT by state code.
+ * State/UT schemes have (governmentLevel === 'state' || governmentLevel === 'union-territory') and matching stateCode.
  */
 export function getStateSchemes(stateCode: StateCode, schemes: Scheme[] = SCHEMES): Scheme[] {
-  return schemes.filter(s => s.governmentLevel === 'state' && s.stateCode === stateCode);
+  return schemes.filter(s => 
+    (s.governmentLevel === 'state' || s.governmentLevel === 'union-territory') && 
+    s.stateCode === stateCode
+  );
 }
 
 /**
- * Returns all schemes administered by a given government (by slug or id: 'central', 'andhra-pradesh', 'telangana', 'tamil-nadu').
+ * Returns all schemes administered by a given government (by slug, id, or stateCode).
  */
 export function getSchemesByGovernment(governmentIdOrSlug: string, schemes: Scheme[] = SCHEMES): Scheme[] {
   const gov = getGovernmentBySlug(governmentIdOrSlug);
   if (!gov) {
-    // If not matching slug, check by id
-    const found = GOVERNMENTS.find(g => g.id.toLowerCase() === governmentIdOrSlug.toLowerCase());
+    // If not matching slug, check by id or stateCode
+    const found = GOVERNMENTS.find(g => 
+      g.id.toLowerCase() === governmentIdOrSlug.toLowerCase() ||
+      g.slug.toLowerCase() === governmentIdOrSlug.toLowerCase() ||
+      (g.stateCode && g.stateCode.toLowerCase() === governmentIdOrSlug.toLowerCase())
+    );
     if (!found) return [];
     if (found.level === 'central') {
       return getCentralSchemes(schemes);
@@ -137,6 +146,7 @@ export function getGovernmentStats(schemes: Scheme[] = SCHEMES): GovernmentStats
       governmentId: gov.id,
       name: gov.name,
       level: gov.level,
+      jurisdictionType: gov.jurisdictionType,
       stateCode: gov.stateCode,
       schemeCount: govSchemes.length,
       verifiedCount,
@@ -151,6 +161,7 @@ export function getGovernmentStats(schemes: Scheme[] = SCHEMES): GovernmentStats
 export function getCatalogSummary(schemes: Scheme[] = SCHEMES): CatalogSummary {
   const central = getCentralSchemes(schemes).length;
   const state = schemes.filter(s => s.governmentLevel === 'state').length;
+  const ut = schemes.filter(s => s.governmentLevel === 'union-territory').length;
 
   const breakdown: Record<string, number> = {};
   GOVERNMENTS.filter(g => g.isEnabled).forEach(gov => {
@@ -161,6 +172,7 @@ export function getCatalogSummary(schemes: Scheme[] = SCHEMES): CatalogSummary {
     totalSchemes: schemes.length,
     centralCount: central,
     stateCount: state,
+    utCount: ut,
     governmentBreakdown: breakdown
   };
 }

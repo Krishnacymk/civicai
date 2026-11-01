@@ -13,6 +13,7 @@ import {
   Building2
 } from 'lucide-react';
 import { SCHEMES } from '../data/schemes';
+import { GOVERNMENTS } from '../data/governments';
 import type { Scheme } from '../types/scheme';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -33,10 +34,13 @@ export const EligibilityPage = () => {
   // Form State
   const [targetState, setTargetState] = useState<string>(() => {
     const s = searchParams.get('state')?.toLowerCase();
-    if (s === 'ap' || s === 'andhra-pradesh') return 'Andhra Pradesh';
-    if (s === 'tg' || s === 'telangana') return 'Telangana';
-    if (s === 'tn' || s === 'tamil-nadu') return 'Tamil Nadu';
-    return 'all';
+    if (!s) return 'all';
+    const found = GOVERNMENTS.find(g => 
+      g.slug === s || 
+      g.stateCode?.toLowerCase() === s || 
+      g.name.toLowerCase() === s
+    );
+    return found ? found.name : 'all';
   });
   const [targetSchemeId, setTargetSchemeId] = useState<string>(preselectedSchemeId || 'all');
   const [occupation, setOccupation] = useState<string>('');
@@ -61,9 +65,14 @@ export const EligibilityPage = () => {
     const isPwD = disabilityStatus === 'pwd_40' || disabilityStatus === 'pwd_80_severe' || disabilityStatus === 'chronic_dialysis';
     const isSeverePwD = disabilityStatus === 'pwd_80_severe';
     const isDialysis = disabilityStatus === 'chronic_dialysis';
-    const isAP = targetState === 'Andhra Pradesh';
-    const isTG = targetState === 'Telangana';
-    const isTN = targetState === 'Tamil Nadu';
+    
+    const selectedGov = targetState !== 'all' 
+      ? GOVERNMENTS.find(g => g.name.toLowerCase() === targetState.toLowerCase() || g.stateCode === targetState || g.slug === targetState.toLowerCase())
+      : null;
+    const selectedCode = selectedGov?.stateCode;
+    const isAP = !selectedCode || selectedCode === 'AP';
+    const isTG = !selectedCode || selectedCode === 'TG';
+    const isTN = !selectedCode || selectedCode === 'TN';
 
     const evaluatedSchemes = targetSchemeId === 'all'
       ? SCHEMES
@@ -73,26 +82,16 @@ export const EligibilityPage = () => {
       const matched: string[] = [];
       const unmet: string[] = [];
 
-      // 1. State Jurisdiction Check
-      if (scheme.governmentLevel === 'state') {
-        if (scheme.stateCode === 'AP') {
-          if (!isAP && targetState !== 'all') {
-            unmet.push('Scheme is exclusively applicable to permanent residents of Andhra Pradesh.');
+      // 1. State / Union Territory Jurisdiction Check
+      if (scheme.governmentLevel === 'state' || scheme.governmentLevel === 'union-territory') {
+        if (selectedGov) {
+          if (scheme.stateCode !== selectedCode) {
+            unmet.push(`Scheme is exclusively applicable to permanent residents of ${scheme.administeringGovernment}.`);
           } else {
-            matched.push('Resident of Andhra Pradesh, matching state jurisdiction.');
+            matched.push(`Resident of ${selectedGov.name}, matching ${selectedGov.level === 'union-territory' ? 'UT' : 'state'} jurisdiction.`);
           }
-        } else if (scheme.stateCode === 'TG') {
-          if (!isTG && targetState !== 'all') {
-            unmet.push('Scheme is exclusively applicable to permanent residents of Telangana.');
-          } else {
-            matched.push('Resident of Telangana, matching state jurisdiction.');
-          }
-        } else if (scheme.stateCode === 'TN') {
-          if (!isTN && targetState !== 'all') {
-            unmet.push('Scheme is exclusively applicable to permanent residents of Tamil Nadu.');
-          } else {
-            matched.push('Resident of Tamil Nadu, matching state jurisdiction.');
-          }
+        } else {
+          matched.push(`Administered by ${scheme.administeringGovernment} (${scheme.stateCode}).`);
         }
       } else {
         matched.push('Central Government scheme applicable across all Indian states and Union Territories.');
@@ -181,7 +180,7 @@ export const EligibilityPage = () => {
       }
 
       if (scheme.id === 'tg-rythu-bharosa') {
-        if (hasLand || occupation === 'Farmer' || occupation === 'Tenant Farmer') {
+        if (isTG && (hasLand || occupation === 'Farmer' || occupation === 'Tenant Farmer')) {
           matched.push('Telangana farmer / landholder eligible for ₹15,000/acre annual Rythu Bharosa investment support.');
         } else {
           unmet.push('Requires cultivable land ownership (Pattadar passbook) or registered tenant cultivation in Telangana.');
@@ -221,7 +220,7 @@ export const EligibilityPage = () => {
       }
 
       if (scheme.id === 'tn-kmut-women-basic-income') {
-        if (gender === 'female' && (isBplHousehold || incomeRange === 'below_100k' || incomeRange === 'below_250k')) {
+        if (isTN && gender === 'female' && (isBplHousehold || incomeRange === 'below_100k' || incomeRange === 'below_250k')) {
           matched.push('Tamil Nadu woman head of family with Smart Ration Card: eligible for ₹1,000/month basic income right.');
         } else if (gender !== 'female') {
           unmet.push('Exclusively reserved for women heads of families in Tamil Nadu.');
@@ -382,7 +381,7 @@ export const EligibilityPage = () => {
             Personalized Eligibility Intelligence
           </h1>
           <p className="text-sm text-[#565C56] dark:text-[#A3ACA5] max-w-2xl leading-relaxed">
-            Answer a few quick questions to identify government schemes you may qualify for across Central Government, Andhra Pradesh, Telangana, and Tamil Nadu welfare programs. No login required—your details are processed purely in your browser's local memory.
+            Answer a few quick questions to identify government schemes you may qualify for across Central Government, all 28 States, and all 8 Union Territories. No login required—your details are processed purely in your browser's local memory.
           </p>
 
         </div>
@@ -449,11 +448,21 @@ export const EligibilityPage = () => {
                       onChange={e => setTargetState(e.target.value)}
                       className="w-full bg-[#FAF8F5] dark:bg-[#121614] border border-[#D5CABE] dark:border-[#2C352F] rounded-lg p-2.5 text-xs text-[#161815] dark:text-[#F3EFEA] focus:outline-none"
                     >
-                      <option value="all">All India (Central Schemes + All State Catalogs)</option>
-                      <option value="Andhra Pradesh">Andhra Pradesh (AP State + Central Welfare Schemes)</option>
-                      <option value="Telangana">Telangana (Telangana State + Central Welfare Schemes)</option>
-                      <option value="Tamil Nadu">Tamil Nadu (Tamil Nadu State + Central Welfare Schemes)</option>
-                      <option value="Other">Other States & Union Territories (Central Government Schemes)</option>
+                      <option value="all">All India (Central Schemes + All 36 State & UT Catalogs)</option>
+                      <optgroup label="28 States (State Programs + Central Schemes)">
+                        {GOVERNMENTS.filter(g => g.jurisdictionType === 'state').map(g => (
+                          <option key={g.id} value={g.name}>
+                            {g.name} ({g.stateCode} State + Central Schemes)
+                          </option>
+                        ))}
+                      </optgroup>
+                      <optgroup label="8 Union Territories (UT Programs + Central Schemes)">
+                        {GOVERNMENTS.filter(g => g.jurisdictionType === 'union-territory').map(g => (
+                          <option key={g.id} value={g.name}>
+                            {g.name} ({g.stateCode} UT + Central Schemes)
+                          </option>
+                        ))}
+                      </optgroup>
                     </select>
                   </div>
 

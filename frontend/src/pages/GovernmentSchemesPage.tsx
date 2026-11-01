@@ -42,9 +42,9 @@ export const GovernmentSchemesPage = () => {
     return gov ? getSchemesByGovernment(gov.slug) : [];
   }, [gov]);
 
-  // Central schemes available in state (only relevant for state governments)
+  // Central schemes available in state/UT (only relevant for state/UT governments)
   const centralSchemes = useMemo(() => {
-    if (gov?.level === 'state') {
+    if (gov?.level === 'state' || gov?.level === 'union-territory') {
       return getCentralSchemesAvailableInState();
     }
     return [];
@@ -127,7 +127,11 @@ export const GovernmentSchemesPage = () => {
             <div className="space-y-3 max-w-3xl">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="px-3 py-1 text-xs font-mono font-bold uppercase rounded-md bg-[#1A3B2B] text-white">
-                  {gov.level === 'central' ? 'National Government' : `${gov.stateCode} State Portal`}
+                  {gov.level === 'central' 
+                    ? 'National Government' 
+                    : gov.level === 'union-territory' 
+                    ? `${gov.stateCode} UT Portal` 
+                    : `${gov.stateCode} State Portal`}
                 </span>
                 <span className="px-2.5 py-1 text-xs font-mono rounded-md bg-[#EFE8DE] dark:bg-[#232A25] text-[#565C56] dark:text-[#A3ACA5] border border-[#D5CABE] dark:border-[#2C352F] flex items-center gap-1">
                   <MapPin className="w-3 h-3 text-[#B95938] dark:text-[#DFB24E]" />
@@ -254,8 +258,8 @@ export const GovernmentSchemesPage = () => {
             )}
           </div>
 
-          {/* Optional Toggle for State Portals: Include Central Schemes Accessible in State */}
-          {gov.level === 'state' && (
+          {/* Optional Toggle for State/UT Portals: Include Central Schemes Accessible in State/UT */}
+          {gov.level !== 'central' && (
             <div className="pt-3 border-t border-[#E7DFD4] dark:border-[#232A25] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
               <div className="flex items-center gap-2">
                 <input
@@ -271,7 +275,7 @@ export const GovernmentSchemesPage = () => {
               </div>
 
               <span className="font-mono text-[#858D85] dark:text-[#737D75]">
-                State Government count: <strong>{administeredSchemes.length}</strong> (Central count strictly isolated)
+                {gov.level === 'union-territory' ? 'UT' : 'State'} Government count: <strong>{administeredSchemes.length}</strong> (Central count strictly isolated)
               </span>
             </div>
           )}
@@ -335,7 +339,9 @@ export const GovernmentSchemesPage = () => {
 
                     {/* Government Badge */}
                     <span className="px-2 py-0.5 text-[10px] font-mono rounded bg-[#FAF8F5] dark:bg-[#141916] text-[#565C56] dark:text-[#A3ACA5] border border-[#E7DFD4] dark:border-[#232A25]">
-                      {scheme.stateCode ? `${scheme.stateCode} State` : 'Central'}
+                      {scheme.stateCode 
+                        ? `${scheme.stateCode} ${scheme.governmentLevel === 'union-territory' ? 'UT' : 'State'}` 
+                        : 'Central'}
                     </span>
                   </div>
                 </div>
@@ -423,8 +429,8 @@ export const GovernmentSchemesPage = () => {
           ))}
         </div>
 
-        {/* 4. SEPARATE SECTION: CENTRAL SCHEMES ACCESSIBLE IN THIS STATE (NEVER MIXED) */}
-        {gov.level === 'state' && showCentralInState && (
+        {/* 4. SEPARATE SECTION: CENTRAL SCHEMES ACCESSIBLE IN THIS STATE/UT (NEVER MIXED) */}
+        {gov.level !== 'central' && showCentralInState && (
           <div className="mt-16 pt-12 border-t-2 border-dashed border-[#D5CABE] dark:border-[#2C352F] space-y-6">
             <div className="space-y-1">
               <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#A07A18] dark:text-[#DFB24E]">

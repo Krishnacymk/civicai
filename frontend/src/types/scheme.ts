@@ -1,4 +1,4 @@
-import type { GovernmentLevel, StateCode } from './government';
+import type { GovernmentLevel, StateCode, JurisdictionType } from './government';
 
 export type SchemeCategory = 
   | 'agriculture'
@@ -16,7 +16,7 @@ export type SchemeCategory =
   | 'seniors-elderly'
   | 'low-income-welfare';
 
-export type SchemeOperationalStatus = 'active' | 'closed' | 'upcoming' | 'needs-verification';
+export type SchemeOperationalStatus = 'active' | 'closed' | 'upcoming' | 'needs-verification' | 'discontinued';
 
 export interface RequiredDocument {
   id: string;
@@ -39,7 +39,7 @@ export interface EligibilityRule {
   notes: string;
   minDisabilityPercentage?: number; // For PwD schemes (e.g. 40, 80)
   requiresUDID?: boolean;
-  stateResidence?: 'All India' | 'Andhra Pradesh' | 'Telangana' | 'Tamil Nadu';
+  stateResidence?: string;
   educationLevel?: string[];
   employmentStatus?: string[];
 }
@@ -51,7 +51,7 @@ export interface ApplicationStep {
   portalOrOffice: string;
 }
 
-export type VerificationStatus = 'verified' | 'partially-verified' | 'needs-verification';
+export type VerificationStatus = 'verified' | 'partially-verified' | 'needs-verification' | 'archived_or_discontinued';
 export type LinkStatus = 'accessible' | 'slow-or-intermittent' | 'external-portal';
 
 export interface OfficialSource {
@@ -77,6 +77,7 @@ export interface Scheme {
 
   // Government & Geographic Classification
   governmentLevel: GovernmentLevel;
+  jurisdictionType?: JurisdictionType;
   stateCode: StateCode | null;
   administeringGovernment: string;
   schemeStatus: SchemeOperationalStatus;
@@ -84,8 +85,8 @@ export interface Scheme {
   sourceNotes?: string;
 
   // Backward compatibility fields
-  geographicScope: 'Central (All India)' | 'Central & State Partnership' | 'Rural India' | 'Urban & Rural' | 'State Scheme (Andhra Pradesh)' | 'State Scheme (Telangana)' | 'State Scheme (Tamil Nadu)';
-  stateApplicability: 'All India' | 'Andhra Pradesh' | 'Telangana' | 'Tamil Nadu';
+  geographicScope: string;
+  stateApplicability: string;
   isCentral: boolean;
 
   beneficiaries: string[];

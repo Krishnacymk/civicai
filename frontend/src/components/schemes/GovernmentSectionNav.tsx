@@ -1,5 +1,15 @@
+import { useState, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Landmark, MapPin, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { 
+  Landmark, 
+  MapPin, 
+  ArrowRight, 
+  ShieldCheck, 
+  CheckCircle2, 
+  Search,
+  Building,
+  Flag
+} from 'lucide-react';
 import { ENABLED_GOVERNMENTS } from '../../data/governments';
 import { getGovernmentStats } from '../../services/schemeFilterService';
 import { useLanguage } from '../../context/LanguageContext';
@@ -10,6 +20,8 @@ interface GovernmentSectionNavProps {
   showAllLink?: boolean;
 }
 
+type NavTab = 'featured' | 'states' | 'uts' | 'all';
+
 export const GovernmentSectionNav = ({
   currentGovSlug,
   className = '',
@@ -18,6 +30,9 @@ export const GovernmentSectionNav = ({
   const { t, language } = useLanguage();
   const location = useLocation();
   const stats = getGovernmentStats();
+  
+  const [activeTab, setActiveTab] = useState<NavTab>('featured');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const getCountForGov = (govId: string) => {
     const s = stats.find(item => item.governmentId === govId);
@@ -31,6 +46,49 @@ export const GovernmentSectionNav = ({
     return gov.name;
   };
 
+  // Filter governments based on tab and search
+  const displayedGovernments = useMemo(() => {
+    let list = ENABLED_GOVERNMENTS;
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      return list.filter(g => 
+        g.name.toLowerCase().includes(q) ||
+        g.regionLabel.toLowerCase().includes(q) ||
+        g.capitalCity.toLowerCase().includes(q) ||
+        (g.stateCode && g.stateCode.toLowerCase().includes(q)) ||
+        (g.hindiName && g.hindiName.includes(q)) ||
+        (g.teluguName && g.teluguName.includes(q)) ||
+        (g.tamilName && g.tamilName.includes(q))
+      );
+    }
+
+    if (activeTab === 'featured') {
+      // Central + Pioneer states & major UTs
+      const featuredIds = [
+        'central', 
+        'andhra-pradesh', 
+        'telangana', 
+        'tamil-nadu', 
+        'karnataka', 
+        'maharashtra', 
+        'delhi', 
+        'uttar-pradesh'
+      ];
+      return list.filter(g => featuredIds.includes(g.id));
+    }
+
+    if (activeTab === 'states') {
+      return list.filter(g => g.jurisdictionType === 'state');
+    }
+
+    if (activeTab === 'uts') {
+      return list.filter(g => g.jurisdictionType === 'union-territory');
+    }
+
+    return list;
+  }, [activeTab, searchQuery]);
+
   return (
     <div className={`space-y-4 ${className}`}>
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
@@ -40,10 +98,10 @@ export const GovernmentSectionNav = ({
             <span>{t('nav.exploreGovernments')}</span>
           </div>
           <h2 className="font-serif text-2xl sm:text-3xl text-[#161815] dark:text-[#F3EFEA] font-bold tracking-tight">
-            {t('nav.governmentPortalsTitle')}
+            National Government Portals
           </h2>
           <p className="text-xs sm:text-sm text-[#565C56] dark:text-[#A3ACA5] mt-1 max-w-2xl">
-            {t('nav.governmentPortalsSubtitle')}
+            Explore verified welfare schemes across the Government of India, all 28 States, and all 8 Union Territories.
           </p>
         </div>
 
@@ -62,9 +120,76 @@ export const GovernmentSectionNav = ({
         )}
       </div>
 
-      {/* Responsive Grid: 4 Visually Distinct Cards */}
+      {/* Tabs and Quick Search Filter Bar */}
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 pt-1">
+        <div className="flex flex-wrap items-center gap-1.5 bg-[#FAF8F5] dark:bg-[#121614] border border-[#D5CABE] dark:border-[#2C352F] p-1 rounded-xl">
+          <button
+            type="button"
+            onClick={() => { setActiveTab('featured'); setSearchQuery(''); }}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              activeTab === 'featured' && !searchQuery
+                ? 'bg-[#1A3B2B] dark:bg-[#24583F] text-white shadow-2xs font-semibold'
+                : 'text-[#565C56] dark:text-[#A3ACA5] hover:text-[#161815] dark:hover:text-white'
+            }`}
+          >
+            Featured Portals (8)
+          </button>
+
+          <button
+            type="button"
+            onClick={() => { setActiveTab('states'); setSearchQuery(''); }}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1 ${
+              activeTab === 'states' && !searchQuery
+                ? 'bg-[#1A3B2B] dark:bg-[#24583F] text-white shadow-2xs font-semibold'
+                : 'text-[#565C56] dark:text-[#A3ACA5] hover:text-[#161815] dark:hover:text-white'
+            }`}
+          >
+            <Building className="w-3 h-3" />
+            <span>28 States (140)</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => { setActiveTab('uts'); setSearchQuery(''); }}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1 ${
+              activeTab === 'uts' && !searchQuery
+                ? 'bg-[#1A3B2B] dark:bg-[#24583F] text-white shadow-2xs font-semibold'
+                : 'text-[#565C56] dark:text-[#A3ACA5] hover:text-[#161815] dark:hover:text-white'
+            }`}
+          >
+            <Flag className="w-3 h-3" />
+            <span>8 Union Territories (40)</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => { setActiveTab('all'); setSearchQuery(''); }}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              activeTab === 'all' && !searchQuery
+                ? 'bg-[#1A3B2B] dark:bg-[#24583F] text-white shadow-2xs font-semibold'
+                : 'text-[#565C56] dark:text-[#A3ACA5] hover:text-[#161815] dark:hover:text-white'
+            }`}
+          >
+            All 37 Portals
+          </button>
+        </div>
+
+        {/* Quick Search */}
+        <div className="relative w-full md:w-64">
+          <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#858D85] dark:text-[#737D75]" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search state, UT, or code..."
+            className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl bg-white dark:bg-[#181D1A] border border-[#D5CABE] dark:border-[#2C352F] text-[#161815] dark:text-[#F3EFEA] placeholder-[#858D85] focus:outline-hidden focus:ring-1 focus:ring-[#1A3B2B] dark:focus:ring-[#DFB24E]"
+          />
+        </div>
+      </div>
+
+      {/* Responsive Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
-        {ENABLED_GOVERNMENTS.map((gov) => {
+        {displayedGovernments.map((gov) => {
           const isActive = currentGovSlug === gov.slug || location.pathname === `/schemes/${gov.slug}`;
           const count = getCountForGov(gov.id);
           const localizedName = getLocalizedGovName(gov);
@@ -89,6 +214,8 @@ export const GovernmentSectionNav = ({
                   <div className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold text-xs ${
                     gov.level === 'central'
                       ? 'bg-[#FAF3E2] dark:bg-[#252219] text-[#A07A18] dark:text-[#DFB24E] border border-[#E0D0AB] dark:border-[#383220]'
+                      : gov.jurisdictionType === 'union-territory'
+                      ? 'bg-[#EBF0F5] dark:bg-[#16232E] text-[#20527A] dark:text-[#6EA8D9] border border-[#C2D6E8] dark:border-[#1F3E57]'
                       : 'bg-[#EBF2ED] dark:bg-[#1A2E22] text-[#1A3B2B] dark:text-[#7A9984] border border-[#C5DAC9] dark:border-[#253D30]'
                   }`}>
                     {gov.stateCode ? gov.stateCode : 'IN'}

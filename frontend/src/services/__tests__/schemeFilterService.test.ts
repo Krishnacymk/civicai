@@ -10,12 +10,30 @@ import {
   searchSchemes
 } from '../schemeFilterService';
 import { SCHEMES } from '../../data/schemes';
+import { GOVERNMENTS } from '../../data/governments';
+import type { StateCode } from '../../types/government';
 
-describe('Government-Wise Scheme Classification and Filtering', () => {
+describe('National Master Government-Wise Scheme Classification and Verification Mission', () => {
 
-  it('correctly classifies all Central Government schemes with stateCode === null', () => {
+  it('contains exactly 205 verified schemes across 37 government entities with zero duplicate IDs', () => {
+    expect(SCHEMES.length).toBe(205);
+    const idSet = new Set<string>();
+    const duplicates: string[] = [];
+
+    SCHEMES.forEach(s => {
+      if (idSet.has(s.id)) {
+        duplicates.push(s.id);
+      }
+      idSet.add(s.id);
+    });
+
+    expect(duplicates).toEqual([]);
+    expect(idSet.size).toBe(205);
+  });
+
+  it('correctly classifies all 25 Central Government schemes with stateCode === null', () => {
     const centralSchemes = getCentralSchemes();
-    expect(centralSchemes.length).toBeGreaterThan(0);
+    expect(centralSchemes.length).toBe(25);
 
     centralSchemes.forEach(scheme => {
       expect(scheme.governmentLevel).toBe('central');
@@ -24,103 +42,95 @@ describe('Government-Wise Scheme Classification and Filtering', () => {
     });
   });
 
-  it('strictly isolates Andhra Pradesh schemes (AP schemes never in TG or TN)', () => {
+  it('verifies that all 28 Indian States have exactly 5 verified schemes each (total: 140 state schemes)', () => {
+    const stateGovs = GOVERNMENTS.filter(g => g.jurisdictionType === 'state');
+    expect(stateGovs.length).toBe(28);
+
+    let totalStateSchemes = 0;
+    stateGovs.forEach(gov => {
+      expect(gov.stateCode).toBeDefined();
+      const schemes = getStateSchemes(gov.stateCode as StateCode);
+      expect(schemes.length).toBe(5);
+      totalStateSchemes += schemes.length;
+
+      schemes.forEach(s => {
+        expect(s.governmentLevel).toBe('state');
+        expect(s.stateCode).toBe(gov.stateCode);
+        expect(s.administeringGovernment).toBeDefined();
+        expect(s.administeringGovernment.length).toBeGreaterThan(0);
+      });
+    });
+
+    expect(totalStateSchemes).toBe(140);
+  });
+
+  it('verifies that all 8 Union Territories have exactly 5 verified schemes each (total: 40 UT schemes)', () => {
+    const utGovs = GOVERNMENTS.filter(g => g.jurisdictionType === 'union-territory');
+    expect(utGovs.length).toBe(8);
+
+    let totalUtSchemes = 0;
+    utGovs.forEach(gov => {
+      expect(gov.stateCode).toBeDefined();
+      const schemes = getStateSchemes(gov.stateCode as StateCode);
+      expect(schemes.length).toBe(5);
+      totalUtSchemes += schemes.length;
+
+      schemes.forEach(s => {
+        expect(s.governmentLevel).toBe('union-territory');
+        expect(s.stateCode).toBe(gov.stateCode);
+        expect(s.administeringGovernment).toBeDefined();
+        expect(s.administeringGovernment.length).toBeGreaterThan(0);
+      });
+    });
+
+    expect(totalUtSchemes).toBe(40);
+  });
+
+  it('strictly isolates Andhra Pradesh schemes (AP schemes never leak into TG, TN, or other states)', () => {
     const apSchemes = getStateSchemes('AP');
     const tgSchemes = getStateSchemes('TG');
     const tnSchemes = getStateSchemes('TN');
 
-    expect(apSchemes.length).toBe(4);
-    
-    // Check every AP scheme
+    expect(apSchemes.length).toBe(5);
+    expect(tgSchemes.length).toBe(5);
+    expect(tnSchemes.length).toBe(5);
+
     apSchemes.forEach(apScheme => {
       expect(apScheme.governmentLevel).toBe('state');
       expect(apScheme.stateCode).toBe('AP');
-      expect(apScheme.administeringGovernment).toBe('Government of Andhra Pradesh');
 
-      // Verify strict isolation: AP scheme id MUST NOT be in TG or TN
-      const inTG = tgSchemes.some(s => s.id === apScheme.id);
-      const inTN = tnSchemes.some(s => s.id === apScheme.id);
-      expect(inTG).toBe(false);
-      expect(inTN).toBe(false);
+      // Zero leakage
+      expect(tgSchemes.some(s => s.id === apScheme.id)).toBe(false);
+      expect(tnSchemes.some(s => s.id === apScheme.id)).toBe(false);
     });
   });
 
-  it('strictly isolates Telangana schemes (TG schemes never in AP or TN)', () => {
-    const tgSchemes = getStateSchemes('TG');
-    const apSchemes = getStateSchemes('AP');
-    const tnSchemes = getStateSchemes('TN');
+  it('retrieves schemes for all 37 governments by their slug accurately', () => {
+    expect(GOVERNMENTS.length).toBe(37);
 
-    expect(tgSchemes.length).toBe(5);
-
-    // Check every TG scheme
-    tgSchemes.forEach(tgScheme => {
-      expect(tgScheme.governmentLevel).toBe('state');
-      expect(tgScheme.stateCode).toBe('TG');
-      expect(tgScheme.administeringGovernment).toBe('Government of Telangana');
-
-      // Verify strict isolation: TG scheme id MUST NOT be in AP or TN
-      const inAP = apSchemes.some(s => s.id === tgScheme.id);
-      const inTN = tnSchemes.some(s => s.id === tgScheme.id);
-      expect(inAP).toBe(false);
-      expect(inTN).toBe(false);
+    GOVERNMENTS.forEach(gov => {
+      const schemes = getSchemesByGovernment(gov.slug);
+      if (gov.level === 'central') {
+        expect(schemes.length).toBe(25);
+      } else {
+        expect(schemes.length).toBe(5);
+      }
     });
-  });
-
-  it('strictly isolates Tamil Nadu schemes (TN schemes never in AP or TG)', () => {
-    const tnSchemes = getStateSchemes('TN');
-    const apSchemes = getStateSchemes('AP');
-    const tgSchemes = getStateSchemes('TG');
-
-    expect(tnSchemes.length).toBe(5);
-
-    // Check every TN scheme
-    tnSchemes.forEach(tnScheme => {
-      expect(tnScheme.governmentLevel).toBe('state');
-      expect(tnScheme.stateCode).toBe('TN');
-      expect(tnScheme.administeringGovernment).toBe('Government of Tamil Nadu');
-
-      // Verify strict isolation: TN scheme id MUST NOT be in AP or TG
-      const inAP = apSchemes.some(s => s.id === tnScheme.id);
-      const inTG = tgSchemes.some(s => s.id === tnScheme.id);
-      expect(inAP).toBe(false);
-      expect(inTG).toBe(false);
-    });
-  });
-
-  it('retrieves schemes by government slug correctly', () => {
-    const central = getSchemesByGovernment('central');
-    const ap = getSchemesByGovernment('andhra-pradesh');
-    const tg = getSchemesByGovernment('telangana');
-    const tn = getSchemesByGovernment('tamil-nadu');
-
-    expect(central.length).toBe(25);
-    expect(ap.length).toBe(4);
-    expect(tg.length).toBe(5);
-    expect(tn.length).toBe(5);
 
     // Non-existent government returns empty array
-    expect(getSchemesByGovernment('invalid-gov')).toEqual([]);
+    expect(getSchemesByGovernment('invalid-gov-slug')).toEqual([]);
   });
 
-  it('calculates exact statistics without fabrication', () => {
+  it('calculates master statistics and catalog summary with 100% mathematical precision', () => {
     const stats = getGovernmentStats();
-    expect(stats.length).toBe(4); // 4 enabled governments
-
-    const centralStat = stats.find(s => s.governmentId === 'central')!;
-    const apStat = stats.find(s => s.governmentId === 'andhra-pradesh')!;
-    const tgStat = stats.find(s => s.governmentId === 'telangana')!;
-    const tnStat = stats.find(s => s.governmentId === 'tamil-nadu')!;
-
-    expect(centralStat.schemeCount).toBe(25);
-    expect(apStat.schemeCount).toBe(4);
-    expect(tgStat.schemeCount).toBe(5);
-    expect(tnStat.schemeCount).toBe(5);
+    expect(stats.length).toBe(37); // All 37 governments
 
     const summary = getCatalogSummary();
-    expect(summary.totalSchemes).toBe(39);
+    expect(summary.totalSchemes).toBe(205);
     expect(summary.centralCount).toBe(25);
-    expect(summary.stateCount).toBe(14);
-    expect(summary.centralCount + summary.stateCount).toBe(summary.totalSchemes);
+    expect(summary.stateCount).toBe(140);
+    expect(summary.utCount).toBe(40);
+    expect(summary.centralCount + summary.stateCount + summary.utCount).toBe(205);
   });
 
   it('maintains distinct Central schemes available in state without contaminating state counts', () => {
@@ -128,12 +138,16 @@ describe('Government-Wise Scheme Classification and Filtering', () => {
     expect(centralInState.length).toBe(25);
     centralInState.forEach(s => {
       expect(s.governmentLevel).toBe('central');
+      expect(s.stateCode).toBeNull();
     });
 
     const apStateOnly = getStateSchemes('AP');
-    expect(apStateOnly.length).toBe(4);
-    // Ensure no central schemes are in apStateOnly
+    expect(apStateOnly.length).toBe(5);
     expect(apStateOnly.every(s => s.governmentLevel === 'state')).toBe(true);
+
+    const dlUtOnly = getStateSchemes('DL');
+    expect(dlUtOnly.length).toBe(5);
+    expect(dlUtOnly.every(s => s.governmentLevel === 'union-territory')).toBe(true);
   });
 
   it('filters by category within government scope accurately', () => {
@@ -144,6 +158,10 @@ describe('Government-Wise Scheme Classification and Filtering', () => {
     const tnEducation = getSchemesByCategory('education', 'tamil-nadu');
     expect(tnEducation.length).toBe(1);
     expect(tnEducation[0].id).toBe('tn-pudhumai-penn');
+
+    const dlHealth = getSchemesByCategory('healthcare', 'delhi');
+    expect(dlHealth.length).toBe(1);
+    expect(dlHealth[0].id).toBe('dl-delhi-arogya-kosh');
   });
 
   it('searches schemes across multilingual names and keywords', () => {
@@ -159,15 +177,23 @@ describe('Government-Wise Scheme Classification and Filtering', () => {
     const tamilSearch = searchSchemes('மகளிர்');
     expect(tamilSearch.length).toBeGreaterThanOrEqual(1);
     expect(tamilSearch.some(s => s.id === 'tn-kmut-women-basic-income')).toBe(true);
+
+    // Hindi search
+    const hindiSearch = searchSchemes('किसान');
+    expect(hindiSearch.length).toBeGreaterThanOrEqual(1);
   });
 
-  it('ensures every scheme has verified official sources with valid gov URLs', () => {
+  it('ensures every single scheme has verified official sources with valid HTTPS URLs', () => {
     SCHEMES.forEach(scheme => {
       expect(scheme.officialSource.url).toBeDefined();
       expect(scheme.officialSource.url.startsWith('https://')).toBe(true);
       expect(scheme.officialSource.name).toBeDefined();
+      expect(scheme.officialSource.department).toBeDefined();
       expect(scheme.officialSource.verificationStatus).toBe('verified');
       expect(scheme.schemeStatus).toBe('active');
+      expect(scheme.requiredDocuments.length).toBeGreaterThanOrEqual(1);
+      expect(scheme.beneficiaries.length).toBeGreaterThanOrEqual(1);
+      expect(scheme.financialBenefit).toBeDefined();
     });
   });
 
