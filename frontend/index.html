@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CivicAI — Public Services, Made Understandable</title>
+    <meta name="description" content="Discover Indian welfare schemes, understand requirements in plain language, verify potential eligibility, and prepare document checklists backed by official sources." />
+    
+    <!-- Anti-flash script for instant theme and language restoration -->
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('civicai_theme') || 'system';
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (theme === 'dark' || (theme === 'system' && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+          var lang = localStorage.getItem('civicai_language') || 'en';
+          document.documentElement.lang = lang;
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#FAF8F5] dark:bg-[#101412] text-[#161815] dark:text-[#F3EFEA] min-h-screen selection:bg-[#EAE3D6] dark:selection:bg-[#2A5A43] selection:text-[#1A3B2B] dark:selection:text-[#FAF8F5] transition-colors duration-150">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
