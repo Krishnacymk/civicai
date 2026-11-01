@@ -7,6 +7,7 @@ import { ScrollToTop } from './components/common/ScrollToTop';
 import { LandingPage } from './pages/LandingPage';
 import { SchemesPage } from './pages/SchemesPage';
 import { SchemeDetailPage } from './pages/SchemeDetailPage';
+import { GovernmentSchemesPage } from './pages/GovernmentSchemesPage';
 import { AssistantPage } from './pages/AssistantPage';
 import { EligibilityPage } from './pages/EligibilityPage';
 import { ChecklistPage } from './pages/ChecklistPage';
@@ -21,6 +22,10 @@ function AnimatedRoutes() {
       <Routes location={location}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/schemes" element={<SchemesPage />} />
+        <Route path="/schemes/central" element={<GovernmentSchemesPage />} />
+        <Route path="/schemes/andhra-pradesh" element={<GovernmentSchemesPage />} />
+        <Route path="/schemes/telangana" element={<GovernmentSchemesPage />} />
+        <Route path="/schemes/tamil-nadu" element={<GovernmentSchemesPage />} />
         <Route path="/schemes/:id" element={<SchemeDetailPage />} />
         <Route path="/assistant" element={<AssistantPage />} />
         <Route path="/eligibility" element={<EligibilityPage />} />

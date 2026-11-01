@@ -14,6 +14,7 @@ import {
   Building2
 } from 'lucide-react';
 import { SCHEMES, CATEGORIES, STATES_CONFIG } from '../data/schemes';
+import { GovernmentSectionNav } from '../components/schemes/GovernmentSectionNav';
 import { useLanguage } from '../context/LanguageContext';
 
 export const SchemesPage = () => {
@@ -57,14 +58,21 @@ export const SchemesPage = () => {
         return false;
       }
 
-      // State matching
-      if (selectedState === 'Andhra Pradesh') {
-        // Show both AP state-specific and Central schemes that apply to AP
-        if (scheme.stateApplicability !== 'Andhra Pradesh' && scheme.stateApplicability !== 'All India') {
+      // State / Government matching
+      if (selectedState === 'central' || selectedState === 'Central') {
+        if (scheme.governmentLevel !== 'central') {
           return false;
         }
-      } else if (selectedState === 'Central') {
-        if (!scheme.isCentral) {
+      } else if (selectedState === 'Andhra Pradesh' || selectedState === 'AP') {
+        if (scheme.stateCode !== 'AP' && scheme.governmentLevel !== 'central') {
+          return false;
+        }
+      } else if (selectedState === 'Telangana' || selectedState === 'TG') {
+        if (scheme.stateCode !== 'TG' && scheme.governmentLevel !== 'central') {
+          return false;
+        }
+      } else if (selectedState === 'Tamil Nadu' || selectedState === 'TN') {
+        if (scheme.stateCode !== 'TN' && scheme.governmentLevel !== 'central') {
           return false;
         }
       }
@@ -244,6 +252,12 @@ export const SchemesPage = () => {
 
       {/* Main Filter & Results Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        
+        {/* Prominent Government Navigation Area */}
+        <div className="mb-10 bg-white dark:bg-[#181D1A] rounded-xl border border-[#D5CABE] dark:border-[#2C352F] p-5 shadow-xs">
+          <GovernmentSectionNav showAllLink={false} />
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Filter Sidebar */}

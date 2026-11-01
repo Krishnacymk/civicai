@@ -16,6 +16,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'worker',
     beneficiaries: ['Small & Marginal Farmers', 'Cultivable Landholder Families', 'Rural Households'],
     shortSummary: 'Financial benefit of ₹6,000 per year released directly into Aadhaar-linked bank accounts in three equal 4-monthly installments of ₹2,000.',
@@ -127,6 +132,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central & State Partnership',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'worker',
     beneficiaries: ['Landowner Farmers', 'Sharecroppers', 'Tenant Farmers'],
     shortSummary: 'Guarantees comprehensive crop insurance against non-preventable natural risks from pre-sowing to post-harvest at minimal farmer premiums (1.5% Rabi, 2% Kharif, 5% Commercial/Horticultural).',
@@ -221,6 +231,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'State Scheme (Andhra Pradesh)',
     stateApplicability: 'Andhra Pradesh',
     isCentral: false,
+    governmentLevel: 'state',
+    stateCode: 'AP',
+    administeringGovernment: 'Government of Andhra Pradesh',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'worker',
     beneficiaries: ['AP Landowner Farmers', 'Tenant Cultivators (CCRC)', 'FRA Cultivators'],
     shortSummary: 'Direct investment support of ₹20,000 annually per farmer household in Andhra Pradesh, combining ₹14,000 from the State Government and ₹6,000 from Central PM-KISAN, distributed in seasonal installments.',
@@ -321,6 +336,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'all',
     beneficiaries: ['Persons with Benchmark Disabilities (40%+)', 'Children with Special Needs', 'Amputees & Visually Impaired'],
     shortSummary: 'Provides up to 100% subsidy for the purchase and fitting of durable, sophisticated aids and appliances (motorized tricycles, wheelchairs, hearing aids, braille kits, prosthetics, and smart devices) for persons with 40%+ disability.',
@@ -415,6 +435,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'State Scheme (Andhra Pradesh)',
     stateApplicability: 'Andhra Pradesh',
     isCentral: false,
+    governmentLevel: 'state',
+    stateCode: 'AP',
+    administeringGovernment: 'Government of Andhra Pradesh',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'all',
     beneficiaries: ['Persons with Benchmark Disabilities (40%+)', 'Severe / Bedridden Disabled (80%+)', 'Chronic Kidney Disease Dialysis Patients'],
     shortSummary: 'Under G.O.Ms.No.43, Andhra Pradesh provides a monthly pension of ₹6,000 for general PwD (40-79% disability), ₹15,000 for fully disabled/severe/bedridden cases, and ₹10,000 for chronic kidney disease dialysis patients, delivered to doorstep monthly.',
@@ -513,6 +538,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central & State Partnership',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'all',
     beneficiaries: ['Severe Disability (80%+)', 'Multiple Disabilities', 'BPL Households'],
     shortSummary: 'Constitutes the central disability social security component under NSAP providing monthly assistance to BPL citizens aged 18-79 with 80%+ severe or multiple disabilities, augmented by state government top-ups.',
@@ -613,6 +643,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central & State Partnership',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'childhood',
     beneficiaries: ['Children aged 0 to 6 years', 'Pregnant Women', 'Lactating Mothers'],
     shortSummary: 'Universal early childhood nutrition and development package delivering Take-Home Rations (THR), hot cooked meals, immunization, growth monitoring, and preschool non-formal education through 14 lakh Anganwadi centres across India.',
@@ -705,6 +740,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central & State Partnership',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'childhood',
     beneficiaries: ['Orphaned Children', 'Single-Parent Destitute Families', 'Children with Incarcerated/Disabled Parents'],
     shortSummary: 'Provides non-institutional family-based care sponsorship of ₹4,000 per month per child to prevent institutionalization and support education, nutrition, and medical needs of children in difficult circumstances.',
@@ -811,6 +851,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'student',
     beneficiaries: ['Meritorious Class 8 Students', 'Low-Income Households', 'Government School Students'],
     shortSummary: 'Awards ₹12,000 per annum (₹1,000 per month) to 1,00,000 meritorious students from economically weaker sections to arrest dropouts after Class 8 and encourage continuation of secondary education.',
@@ -916,6 +961,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'student',
     beneficiaries: ['Top 80th Percentile Class 12 Graduates', 'College Students', 'Low-Income Families'],
     shortSummary: 'Provides financial support of ₹12,000/year for graduation (first 3 years) and ₹20,000/year for post-graduation to top 80th percentile students of Class 12 board exams whose family income is up to ₹4.5 Lakh.',
@@ -1013,6 +1063,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central & State Partnership',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'student',
     beneficiaries: ['SC Students', 'ST Students', 'OBC Students', 'College Students'],
     shortSummary: 'Centrally sponsored scheme providing complete tuition fee reimbursement and monthly living allowance for post-secondary education (Class 11 to PhD) to students from SC, ST, and eligible OBC categories.',
@@ -1109,6 +1164,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'State Scheme (Andhra Pradesh)',
     stateApplicability: 'Andhra Pradesh',
     isCentral: false,
+    governmentLevel: 'state',
+    stateCode: 'AP',
+    administeringGovernment: 'Government of Andhra Pradesh',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'student',
     beneficiaries: ['Mothers of School Students', 'Class 1 to 12 Students', 'Intermediate Students in AP'],
     shortSummary: 'Under the revised flagship educational initiative of Andhra Pradesh, ₹15,000 annual financial assistance is sanctioned per eligible child studying from Class 1 to 12 (net ₹13,000 deposited via DBT directly into the mother\'s bank account, with ₹2,000 allocated for school infrastructure/maintenance).',
@@ -1220,6 +1280,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'youth',
     beneficiaries: ['Unemployed Youth', 'Job Seekers', 'College Graduates', 'Skilled Workers'],
     shortSummary: 'Government of India centralized employment platform connecting jobseekers with verified private and public employers, free career counselling, job fairs, and vocational training across 1,000+ Model Career Centres.',
@@ -1304,6 +1369,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'youth',
     beneficiaries: ['School/College Dropouts', 'Unemployed Youth', 'Informal Workers seeking upskilling'],
     shortSummary: 'Flagship skill certification scheme of the Ministry of Skill Development offering free industry-curated short-term training (STT) and Recognition of Prior Learning (RPL) in modern domains like AI, robotics, drones, electronics, and green jobs.',
@@ -1402,6 +1472,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'worker',
     beneficiaries: ['Unorganized Workers', 'Construction Laborers', 'Gig & Platform Workers', 'Domestic Helpers'],
     shortSummary: 'National database registering India\'s 30+ crore unorganized workers with a unique 12-digit e-Shram UAN card, providing free accidental insurance coverage of ₹2 Lakh (death/permanent disability) and seamless social security portability across states.',
@@ -1489,6 +1564,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'worker',
     beneficiaries: ['Unorganized Workers', 'Cobblers', 'Rickshaw Pullers', 'Domestic Workers', 'Washermen'],
     shortSummary: 'Voluntary and contributory pension scheme guaranteeing a fixed monthly pension of ₹3,000 after attaining the age of 60 to unorganized workers whose monthly income is ₹15,000 or less, with equal 50:50 matching contribution by the Central Government.',
@@ -1581,6 +1661,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'parent',
     beneficiaries: ['Girl Children under 10 years', 'Parents & Legal Guardians'],
     shortSummary: 'Small-savings scheme for girl children below 10 years of age, offering an 8.2% sovereign-backed tax-free interest rate, deposit flexibility from ₹250 to ₹1.5 Lakh per year, and complete tax exemption under Section 80C (EEE status).',
@@ -1675,6 +1760,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central & State Partnership',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'parent',
     beneficiaries: ['Pregnant Women', 'Lactating Mothers', 'Newborn Girl Children'],
     shortSummary: 'Direct benefit transfer maternity grant of ₹5,000 in two installments for the first living child, and ₹6,000 in a single installment upon the birth of a second girl child, compensating for wage loss and encouraging institutional delivery and vaccination.',
@@ -1773,6 +1863,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'senior',
     beneficiaries: ['Senior Citizens aged 70 and above', 'All Income Groups', 'Elderly Couples'],
     shortSummary: 'Universal health insurance expansion providing a dedicated, separate top-up cover of ₹5 Lakh per year for secondary and tertiary cashless hospitalisation to every Indian citizen aged 70 and older, irrespective of socioeconomic status or family income.',
@@ -1858,6 +1953,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central & State Partnership',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'senior',
     beneficiaries: ['Senior Citizens aged 60+', 'BPL Elderly', 'Destitute Seniors'],
     shortSummary: 'Centrally sponsored non-contributory pension under the National Social Assistance Programme (NSAP) providing regular monthly cash transfers to destitute elderly citizens aged 60 years and above from Below Poverty Line families.',
@@ -1955,6 +2055,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central & State Partnership',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'all',
     beneficiaries: ['Bottom 40% Vulnerable Families', 'Rural Deprived Households', 'Occupational Workers'],
     shortSummary: 'World\'s largest public health assurance scheme, providing completely cashless treatment up to ₹5 Lakh per family annually across 29,000+ empanelled government and private hospitals.',
@@ -2041,6 +2146,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'State Scheme (Andhra Pradesh)',
     stateApplicability: 'Andhra Pradesh',
     isCentral: false,
+    governmentLevel: 'state',
+    stateCode: 'AP',
+    administeringGovernment: 'Government of Andhra Pradesh',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'all',
     beneficiaries: ['White Ration Card Holders in AP', 'Low & Middle Income Families in AP', 'Chronic Patients'],
     shortSummary: 'Pioneering health insurance scheme of Andhra Pradesh providing free cashless treatment up to an unprecedented ₹25 Lakhs per family per year covering 3,257+ medical and surgical procedures in over 2,200 empanelled network hospitals across AP and major metro cities.',
@@ -2132,6 +2242,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Rural India',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'all',
     beneficiaries: ['Houseless Rural Families', 'Kutcha House Dwellers', 'BPL Households'],
     shortSummary: 'Central flagship rural housing mission providing direct grant of ₹1.20 Lakh (plain areas) and ₹1.30 Lakh (hilly/difficult areas) directly into beneficiary bank accounts in installments linked to geotagged construction progress.',
@@ -2226,6 +2341,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'all',
     beneficiaries: ['Residential Households', 'Individual Homeowners', 'Housing Societies'],
     shortSummary: 'National clean-energy mission offering direct central subsidies of ₹30,000 for 1 kW, ₹60,000 for 2 kW, and up to ₹78,000 for 3 kW+ rooftop solar systems, enabling middle and low-income families to generate up to 300 units of free electricity every month.',
@@ -2317,6 +2437,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'all',
     beneficiaries: ['Priority Household (PHH) Ration Holders', 'Antyodaya Anna Yojana (AAY) Families', 'Migrant Workers'],
     shortSummary: 'Universal food security scheme providing completely free foodgrains (5 kg per person per month for Priority Households; 35 kg per family per month for Antyodaya families) through 5.3 lakh Fair Price Shops across India, fully portable nationwide via One Nation One Ration Card (ONORC).',
@@ -2406,6 +2531,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'worker',
     beneficiaries: ['Micro-entrepreneurs', 'Shopkeepers', 'Artisans', 'Service Providers'],
     shortSummary: 'Provides institutional micro-credit without collateral or processing fees to non-corporate, non-farm small businesses across four tiers: Shishu (up to ₹50,000), Kishore (₹50,000 to ₹5 Lakh), Tarun (₹5 Lakh to ₹10 Lakh), and Tarun Plus (up to ₹20 Lakh).',
@@ -2500,6 +2630,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'worker',
     beneficiaries: ['Urban Street Vendors', 'Hawkers', 'Fruit/Vegetable Sellers', 'Roadside Food Vendors'],
     shortSummary: 'Micro-credit facility empowering urban street vendors with collateral-free working capital starting at ₹10,000, stepping up to ₹20,000 and ₹50,000 upon timely repayment, with a 7% interest subsidy and cashback of up to ₹1,200 per year on digital transactions.',
@@ -2593,6 +2728,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'worker',
     beneficiaries: ['Traditional Artisans', 'Craftspeople (18 designated trades)', 'Carpenters', 'Potters', 'Blacksmiths', 'Masons', 'Tailors'],
     shortSummary: 'End-to-end holistic support for traditional artisans and craftspeople working with their hands and tools across 18 designated trades, offering PM Vishwakarma Certificate & ID, basic & advanced skill training with ₹500/day stipend, ₹15,000 e-voucher for modern toolkits, and collateral-free enterprise credit up to ₹3 Lakh at a concessional 5% interest rate.',
@@ -2687,6 +2827,11 @@ export const SCHEMES: Scheme[] = [
     geographicScope: 'Central (All India)',
     stateApplicability: 'All India',
     isCentral: true,
+    governmentLevel: 'central',
+    stateCode: null,
+    administeringGovernment: 'Government of India',
+    schemeStatus: 'active',
+    languages: ['en', 'hi', 'te', 'ta'],
     lifeStage: 'worker',
     beneficiaries: ['SC Entrepreneurs', 'ST Entrepreneurs', 'Women Entrepreneurs'],
     shortSummary: 'Facilitates bank loans between ₹10 Lakh and ₹1 Crore to at least one Scheduled Caste (SC) or Scheduled Tribe (ST) borrower and at least one woman borrower per bank branch for setting up greenfield (first-time) manufacturing, services, or trading enterprises.',
@@ -2770,6 +2915,1017 @@ export const SCHEMES: Scheme[] = [
       linkStatus: 'accessible',
       verificationNotes: 'Official portal operated by SIDBI for SC/ST and Women entrepreneurs.'
     }
+  },
+
+  // =========================================================================
+  // TELANGANA STATE GOVERNMENT SCHEMES (TG)
+  // =========================================================================
+  {
+    id: 'tg-rythu-bharosa',
+    name: 'Rythu Bharosa / Rythu Bandhu (Telangana Farmer Investment Support)',
+    hindiName: 'रैतु भरोसा (तेलंगाना किसान निवेश सहायता योजना)',
+    teluguName: 'రైతు భరోసా / రైతు బంధు (తెలంగాణ)',
+    tamilName: 'ரைத்து பரோசா (தெலுங்கானா விவசாய முதலீட்டு உதவி)',
+    tagline: 'Direct seasonal crop investment support of ₹10,000 to ₹15,000 per acre per year for Telangana farmers.',
+    category: 'agriculture',
+    categoryLabel: 'Agriculture & Farming',
+    governmentLevel: 'state',
+    stateCode: 'TG',
+    administeringGovernment: 'Government of Telangana',
+    schemeStatus: 'active',
+    languages: ['en', 'te'],
+    geographicScope: 'State Scheme (Telangana)',
+    stateApplicability: 'Telangana',
+    isCentral: false,
+    lifeStage: 'worker',
+    beneficiaries: ['Landholding Farmers of Telangana', 'Pattadar Passbook Holders', 'Rural Farming Households'],
+    shortSummary: 'Investment assistance of ₹5,000 to ₹7,500 per acre per crop season transferred directly into farmer bank accounts via DBT ahead of Kharif and Rabi sowing seasons.',
+    fullDescription: 'Rythu Bharosa is a flagship agricultural welfare initiative by the Government of Telangana designed to eliminate farmer debt traps caused by private moneylenders. By providing non-refundable financial assistance per acre each season, it enables farmers to purchase high-quality certified seeds, fertilizers, pesticides, and cover field preparation costs without borrowing.',
+    financialBenefit: '₹10,000 to ₹15,000 / acre per year (₹5,000–₹7,500/acre in 2 seasons via DBT)',
+    keyObjectives: [
+      'Provide timely liquidity for seeds, fertilizers, and ploughing before each cropping season',
+      'Liberate tenant and smallholder farmers from high-interest informal loans',
+      'Enhance agricultural productivity and rural income resilience across Telangana'
+    ],
+    eligibilityRules: {
+      minAge: 18,
+      occupations: ['Farmer', 'Cultivator', 'Agriculture Landowner'],
+      stateResidence: 'Telangana',
+      notes: 'Must own agricultural land registered on the Dharani / Telangana State Land Records portal with a valid digital Pattadar Passbook.'
+    },
+    eligibilityHighlights: [
+      'Resident farmer of Telangana holding agricultural land',
+      'Pattadar Passbook issued by Telangana Revenue Department',
+      'Bank account seeded with Aadhaar and mapped with NPCI',
+      'Land title verified on Dharani portal'
+    ],
+    exclusions: [
+      'Institutional and corporate landholders',
+      'Commercial real estate plots converted from agricultural land',
+      'Government employees holding constitutional posts'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tg-farmer-aadhaar',
+        name: 'Aadhaar Card of Landowner',
+        category: 'identity',
+        purpose: 'Identity verification and biometric eKYC authentication',
+        citizenTip: 'Check that Aadhaar name exactly matches your Dharani land title.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tg-pattadar',
+        name: 'Telangana Digital Pattadar Passbook (Dharani RoR)',
+        category: 'land',
+        purpose: 'Proof of cultivable agricultural land title and survey extent',
+        citizenTip: 'Download digital copy from dharani.telangana.gov.in using Khata number.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tg-bank',
+        name: 'Aadhaar-Seeded Bank Passbook',
+        category: 'bank',
+        purpose: 'Direct Benefit Transfer (DBT) credit destination',
+        citizenTip: 'Ensure bank account is in active status with NPCI mapper enabled.',
+        isMandatory: true
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Land Verification on Dharani Portal',
+        description: 'Verify your agricultural land parcels and Khata number on the official Dharani land records portal.',
+        portalOrOffice: 'dharani.telangana.gov.in'
+      },
+      {
+        stepNumber: 2,
+        title: 'Agriculture Extension Officer (AEO) Enrollment',
+        description: 'Submit your passbook and Aadhaar details to your local Agriculture Extension Officer (AEO) at the Rythu Vedika.',
+        portalOrOffice: 'Local Rythu Vedika / Mandal Agriculture Office'
+      },
+      {
+        stepNumber: 3,
+        title: 'DBT Credit into Bank Account',
+        description: 'Following Treasury verification, funds are released directly into your bank account before sowing begins.',
+        portalOrOffice: 'Direct Bank Account'
+      }
+    ],
+    officialSource: {
+      name: 'Department of Agriculture, Government of Telangana',
+      url: 'https://rythubandhu.telangana.gov.in',
+      lastVerifiedDate: 'October 2026',
+      department: 'Agriculture and Cooperation Department',
+      helpline: '040-2338-3520',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official Telangana Government agricultural investment portal.'
+    }
+  },
+  {
+    id: 'tg-aasara-cheyutha-pension',
+    name: 'Telangana Aasara / Cheyutha Social Security Pension',
+    hindiName: 'तेलंगाना आसरा / चेयुता सामाजिक सुरक्षा पेंशन',
+    teluguName: 'తెలంగాణ ఆసరా / చేయూత సామాజిక పింఛన్లు',
+    tamilName: 'தெலுங்கானா ஆசரா சமூக பாதுகாப்பு ஓய்வூதியம்',
+    tagline: 'Monthly non-contributory pension of ₹2,016 to ₹4,016 for elderly, widows, weavers, and disabled citizens.',
+    category: 'pension',
+    categoryLabel: 'Senior Citizens',
+    governmentLevel: 'state',
+    stateCode: 'TG',
+    administeringGovernment: 'Government of Telangana',
+    schemeStatus: 'active',
+    languages: ['en', 'te'],
+    geographicScope: 'State Scheme (Telangana)',
+    stateApplicability: 'Telangana',
+    isCentral: false,
+    lifeStage: 'senior',
+    beneficiaries: ['Senior Citizens (57+)', 'Widows', 'Persons with Disabilities (PwD)', 'Weavers', 'Toddy Tappers', 'Beedi Workers'],
+    shortSummary: 'Monthly financial assistance of ₹2,016 per month for senior citizens, widows, and artisans, and ₹4,016 per month for persons with disabilities holding Food Security Cards.',
+    fullDescription: 'The Aasara / Cheyutha pension scheme is Telangana\'s premier social safety net to protect vulnerable segments of society from destitution. Administered by the Society for Elimination of Rural Poverty (SERP), it guarantees monthly dignified living support deposited into biometric postal/bank accounts.',
+    financialBenefit: '₹2,016/month (Elderly, Widows, Artisans) | ₹4,016/month (Persons with Disabilities)',
+    keyObjectives: [
+      'Provide monthly living assistance to disabled, elderly, and widowed citizens living below the poverty line',
+      'Prevent social exclusion and support economic dignity in rural and urban Telangana',
+      'Disburse pensions punctually through biometric post office and bank points'
+    ],
+    eligibilityRules: {
+      minAge: 57,
+      isBPLRequired: true,
+      minDisabilityPercentage: 40,
+      stateResidence: 'Telangana',
+      notes: 'Age threshold is 57+ for Old Age Pension; 18+ for Widows and PwD (with ≥40% SADAREM disability certificate). Must hold valid Telangana Food Security Card.'
+    },
+    eligibilityHighlights: [
+      'Resident of Telangana belonging to below-poverty-line household',
+      'Valid Food Security Card (FSC / White Ration Card)',
+      'Age 57 or above for Old Age Pension; 18+ for Widow Pension',
+      'SADAREM certificate showing ≥40% disability for PwD pension'
+    ],
+    exclusions: [
+      'Persons with family members in regular government service or receiving another government pension',
+      'Families owning more than 3 acres of wet land or 7.5 acres of dry land',
+      'Income tax assessees'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tg-pension-aadhaar',
+        name: 'Aadhaar Card of Applicant',
+        category: 'identity',
+        purpose: 'Identity, age proof, and biometric DBT linkage',
+        citizenTip: 'Ensure date of birth in Aadhaar card matches your birth record or voter ID.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tg-fsc',
+        name: 'Telangana Food Security Card (White Ration Card)',
+        category: 'income',
+        purpose: 'Proof of Below Poverty Line (BPL) economic eligibility',
+        citizenTip: 'Check that applicant name is listed as head or member in the FSC.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tg-sadarem',
+        name: 'SADAREM Disability Certificate (for PwD applicants)',
+        category: 'disability',
+        purpose: 'Proof of certified disability percentage (minimum 40%)',
+        citizenTip: 'Obtain from district medical board camp with valid computerized registration number.',
+        isMandatory: false
+      },
+      {
+        id: 'doc-tg-pension-bank',
+        name: 'Aadhaar-Linked Bank / Post Office Account Passbook',
+        category: 'bank',
+        purpose: 'Monthly pension direct benefit transfer',
+        citizenTip: 'Post office savings accounts with Aadhaar micro-ATM access are preferred.',
+        isMandatory: true
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Submit Application at MeeSeva / Ward Office',
+        description: 'Submit Aasara application at local MeeSeva Centre or Village Gram Panchayat / Municipal Ward Office.',
+        portalOrOffice: 'MeeSeva Centre / Gram Panchayat'
+      },
+      {
+        stepNumber: 2,
+        title: 'Verification by Panchayat Secretary / Municipal Commissioner',
+        description: 'Field inspection and socioeconomic verification conducted by local revenue and panchayat officials.',
+        portalOrOffice: 'Local Administration'
+      },
+      {
+        stepNumber: 3,
+        title: 'Sanction and Monthly Pension Release',
+        description: 'District Collector issues sanction order; monthly pension is disbursed via DBT on the 1st week of each month.',
+        portalOrOffice: 'Bank / Post Office'
+      }
+    ],
+    officialSource: {
+      name: 'Society for Elimination of Rural Poverty (SERP), Government of Telangana',
+      url: 'https://aasara.telangana.gov.in',
+      lastVerifiedDate: 'October 2026',
+      department: 'Panchayat Raj & Rural Development Department',
+      helpline: '1800-200-1001',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official Telangana social security pension administration portal.'
+    }
+  },
+  {
+    id: 'tg-rajiv-aarogyasri',
+    name: 'Rajiv Aarogyasri Telangana (Comprehensive Health Care Scheme)',
+    hindiName: 'राजीव आरोग्यश्री तेलंगाना स्वास्थ्य योजना',
+    teluguName: 'రాజీవ్ ఆరోగ్యశ్రీ తెలంగాణ హెల్త్ కేర్ ట్రస్ట్',
+    tamilName: 'ராஜீவ் ஆரோக்கியஸ்ரீ தெலுங்கானா மருத்துவ திட்டம்',
+    tagline: 'Cashless hospitalization cover up to ₹10 Lakhs per family per year for 1,672+ medical procedures.',
+    category: 'healthcare',
+    categoryLabel: 'Healthcare & Wellness',
+    governmentLevel: 'state',
+    stateCode: 'TG',
+    administeringGovernment: 'Government of Telangana',
+    schemeStatus: 'active',
+    languages: ['en', 'te'],
+    geographicScope: 'State Scheme (Telangana)',
+    stateApplicability: 'Telangana',
+    isCentral: false,
+    lifeStage: 'all',
+    beneficiaries: ['BPL Families of Telangana', 'White Food Security Card Holders', 'Low-Income Patients'],
+    shortSummary: 'End-to-end cashless treatment, surgeries, ICU care, diagnostics, and 10 days post-discharge medicines up to ₹10,00,000 per family per year across 1,600+ network hospitals.',
+    fullDescription: 'Rajiv Aarogyasri Telangana is a pioneering health protection scheme covering secondary and tertiary ailments for economically vulnerable families. The financial ceiling has been elevated to ₹10 Lakhs per family per year, shielding citizens from catastrophic out-of-pocket medical expenditure for cardiac, cancer, neurological, and renal treatments.',
+    financialBenefit: 'Up to ₹10,00,000 (₹10 Lakhs) cashless cover per family / year (1,672+ listed procedures)',
+    keyObjectives: [
+      'Provide catastrophic health risk cover to eliminate medical bankruptcy for poor households',
+      'Guarantee 100% cashless treatment from outpatient consultation to post-discharge care',
+      'Empanel top-tier tertiary government and private hospitals across Telangana'
+    ],
+    eligibilityRules: {
+      isBPLRequired: true,
+      stateResidence: 'Telangana',
+      notes: 'Must be an active White Food Security Card (FSC) holder in Telangana with Aadhaar seeding.'
+    },
+    eligibilityHighlights: [
+      'Possession of active Telangana White Food Security Card (Rice Card)',
+      'Patient must be resident citizen of Telangana with Aadhaar',
+      'Applicable at all network government and empaneled private hospitals',
+      'Zero pre-existing illness exclusion period'
+    ],
+    exclusions: [
+      'High-income individuals with white cards who pay Income Tax',
+      'Unlisted cosmetic and experimental treatments not included in the standard 1,672 treatment packages'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tg-aarogya-fsc',
+        name: 'Telangana White Food Security Card (FSC)',
+        category: 'identity',
+        purpose: 'Proof of scheme enrollment and family beneficiary validation',
+        citizenTip: 'Card number is checked instantly at the Aarogyasri hospital kiosk by the Aarogyamithra.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tg-aarogya-aadhaar',
+        name: 'Aadhaar Card of Patient',
+        category: 'identity',
+        purpose: 'Biometric patient authentication at hospital admission desk',
+        citizenTip: 'Keep original Aadhaar handy for biometric fingerprint check upon admission.',
+        isMandatory: true
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Visit Empaneled Network Hospital Kiosk',
+        description: 'Approach the Aarogyasri Helpdesk (Aarogyamithra) at any empaneled government or private hospital.',
+        portalOrOffice: 'Hospital Aarogyasri Kiosk'
+      },
+      {
+        stepNumber: 2,
+        title: 'Pre-Authorization Submission',
+        description: 'The treating physician uploads clinical reports and diagnostic scans for online Trust approval.',
+        portalOrOffice: 'Aarogyasri Hospital Portal'
+      },
+      {
+        stepNumber: 3,
+        title: 'Cashless Treatment and Discharge',
+        description: 'Upon approval, receive 100% free treatment, surgery, ICU care, diet, and 10 days of post-discharge medications.',
+        portalOrOffice: 'Network Hospital'
+      }
+    ],
+    officialSource: {
+      name: 'Aarogyasri Health Care Trust, Government of Telangana',
+      url: 'https://aarogyasri.telangana.gov.in',
+      lastVerifiedDate: 'October 2026',
+      department: 'Health, Medical & Family Welfare Department',
+      helpline: '104',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official health insurance trust portal of Government of Telangana.'
+    }
+  },
+  {
+    id: 'tg-mahalakshmi-scheme',
+    name: 'Telangana Mahalakshmi Scheme (Free Bus Travel & Gas Subsidy)',
+    hindiName: 'तेलंगाना महालक्ष्मी योजना (मुफ्त बस यात्रा और ₹500 गैस)',
+    teluguName: 'తెలంగాణ మహాలక్ష్మి పథకం (ఉచిత బస్సు ప్రయాణం & ₹500 సిలిండర్)',
+    tamilName: 'தெலுங்கானா மகாலட்சுமி திட்டம் (இலவச பேருந்து & சிலிண்டர்)',
+    tagline: 'Zero-fare bus travel across Telangana for women and girls, plus ₹500 subsidized domestic LPG cylinder.',
+    category: 'women',
+    categoryLabel: 'Women & Child Development',
+    governmentLevel: 'state',
+    stateCode: 'TG',
+    administeringGovernment: 'Government of Telangana',
+    schemeStatus: 'active',
+    languages: ['en', 'te'],
+    geographicScope: 'State Scheme (Telangana)',
+    stateApplicability: 'Telangana',
+    isCentral: false,
+    lifeStage: 'parent',
+    beneficiaries: ['Women Residents of Telangana', 'Girl Students', 'Transgender Persons', 'Low-Income Households'],
+    shortSummary: 'Unlimited 100% free travel in TGSRTC Palle Velugu and Express buses across the state, alongside ₹500 domestic LPG cylinder refills for Food Security Card holders.',
+    fullDescription: 'The Mahalakshmi Scheme is a transformative public welfare guarantee by the Government of Telangana ensuring women\'s mobility and household economic relief. Women and girl students of all ages travel for free within state borders on state-run buses by simply presenting a government ID, while eligible families receive LPG cylinders at ₹500.',
+    financialBenefit: '100% Free State Bus Travel + ₹500 Domestic LPG Cylinder (saving ₹1,500–₹2,500/month)',
+    keyObjectives: [
+      'Empower women with free, unrestricted mobility for work, education, and healthcare',
+      'Reduce household living costs through subsidized clean cooking gas cylinders at ₹500',
+      'Promote gender equity and increase female workforce participation across Telangana'
+    ],
+    eligibilityRules: {
+      targetGender: 'female',
+      stateResidence: 'Telangana',
+      notes: 'Free bus travel is universally available to all female and transgender residents of Telangana. LPG cylinder at ₹500 requires active Food Security Card and LPG consumer link.'
+    },
+    eligibilityHighlights: [
+      'Resident woman, girl student, or transgender person of Telangana',
+      'Proof of residence via Aadhaar, Voter ID, or Telangana Domicile Certificate',
+      'White Food Security Card for ₹500 LPG cylinder benefit',
+      'Applicable on all TGSRTC Palle Velugu and Express buses'
+    ],
+    exclusions: [
+      'Interstate luxury buses like Garuda, Garuda Plus, and AC sleeper coaches for free travel',
+      'Commercial LPG consumers'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tg-maha-id',
+        name: 'Aadhaar Card or Residential ID Proof',
+        category: 'identity',
+        purpose: 'Show to bus conductor to receive zero-fare ticket',
+        citizenTip: 'Physical original or DigiLocker digital copy showing Telangana address is valid.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tg-maha-gas',
+        name: 'LPG Connection Consumer Passbook & FSC (for Gas Subsidy)',
+        category: 'other',
+        purpose: 'Verification of domestic LPG consumer ID and subsidy transfer',
+        citizenTip: 'Link your LPG consumer number with your Food Security Card at Praja Palana or MeeSeva.',
+        isMandatory: false
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Free Bus Travel: Instant Boarding',
+        description: 'Board any TGSRTC Palle Velugu or Express bus and display your Aadhaar card with Telangana address to receive a zero-fare passenger ticket.',
+        portalOrOffice: 'TGSRTC Buses'
+      },
+      {
+        stepNumber: 2,
+        title: 'Gas Subsidy: Praja Palana / MeeSeva Verification',
+        description: 'Submit your consumer number and FSC details at your local MeeSeva or Praja Palana Seva Kendra for ₹500 cylinder mapping.',
+        portalOrOffice: 'MeeSeva / Praja Palana Portal'
+      }
+    ],
+    officialSource: {
+      name: 'Government of Telangana (Transport & Consumer Affairs)',
+      url: 'https://telangana.gov.in',
+      lastVerifiedDate: 'October 2026',
+      department: 'Transport, Roads & Buildings Department',
+      helpline: '040-2345-0425',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official scheme notifications by Government of Telangana.'
+    }
+  },
+  {
+    id: 'tg-gruha-jyothi',
+    name: 'Telangana Gruha Jyothi Scheme (200 Units Free Electricity)',
+    hindiName: 'तेलंगाना गृह ज्योति योजना (200 यूनिट मुफ्त बिजली)',
+    teluguName: 'తెలంగాణ గృహ జ్యోతి పథకం (200 యూనిట్ల ఉచిత విద్యుత్)',
+    tamilName: 'தெலுங்கானா கிருக ஜோதி திட்டம் (200 யூனிட் இலவச மின்சாரம்)',
+    tagline: 'Up to 200 units of free residential electricity per month for domestic consumers with Food Security Cards.',
+    category: 'housing',
+    categoryLabel: 'Housing & Clean Energy',
+    governmentLevel: 'state',
+    stateCode: 'TG',
+    administeringGovernment: 'Government of Telangana',
+    schemeStatus: 'active',
+    languages: ['en', 'te'],
+    geographicScope: 'State Scheme (Telangana)',
+    stateApplicability: 'Telangana',
+    isCentral: false,
+    lifeStage: 'all',
+    beneficiaries: ['Domestic Households', 'White Ration Card Holders', 'Low-Income Consumers'],
+    shortSummary: 'Zero electricity bill for households whose monthly domestic power consumption does not exceed 200 units, saving ₹800 to ₹1,200 per month.',
+    fullDescription: 'Gruha Jyothi is a landmark clean energy and economic guarantee launched by the Government of Telangana. Eligible domestic consumers holding Food Security Cards receive zero-rupee electricity bills for consumption up to 200 kWh per month, directly subsidized by the state government through TSSPDCL and TSNPDCL.',
+    financialBenefit: 'Zero electricity bill for monthly usage up to 200 units (saving ₹800–₹1,200 / month)',
+    keyObjectives: [
+      'Alleviate cost of living pressures for low- and middle-income families',
+      'Ensure universal access to clean household electricity across Telangana',
+      'Promote energy efficiency by incentivizing households to stay within 200 monthly units'
+    ],
+    eligibilityRules: {
+      isBPLRequired: true,
+      stateResidence: 'Telangana',
+      notes: 'Consumption must be ≤200 units per month for domestic connection. Consumer Service Connection must be linked to White Food Security Card and Aadhaar.'
+    },
+    eligibilityHighlights: [
+      'Domestic electricity consumer in Telangana (TSSPDCL / TSNPDCL)',
+      'Valid Food Security Card (White Ration Card)',
+      'Monthly electricity consumption within 200 units threshold',
+      'One free connection per eligible household'
+    ],
+    exclusions: [
+      'Commercial, industrial, or agricultural power service connections',
+      'Households whose monthly consumption consistently exceeds 200 units (full bill payable)',
+      'Consumers without valid Food Security Card linkage'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tg-jyothi-bill',
+        name: 'Recent Domestic Electricity Bill (USC / Service Number)',
+        category: 'other',
+        purpose: 'Verification of Unique Service Number and meter connection',
+        citizenTip: 'Check that service connection is categorized as LT-I Domestic.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tg-jyothi-fsc',
+        name: 'Telangana Food Security Card (FSC)',
+        category: 'identity',
+        purpose: 'Verification of household economic eligibility',
+        citizenTip: 'Link FSC with your electricity meter at Praja Palana / MeeSeva.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tg-jyothi-aadhaar',
+        name: 'Aadhaar Card of Consumer / Family Head',
+        category: 'identity',
+        purpose: 'Biometric and eKYC verification',
+        citizenTip: 'Aadhaar must be linked to the electricity consumer profile.',
+        isMandatory: true
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Meter Linkage via Praja Palana / MeeSeva',
+        description: 'Submit your Unique Service Number (USC) and Food Security Card number at MeeSeva or during Praja Palana drives.',
+        portalOrOffice: 'MeeSeva / DISCOM Portal'
+      },
+      {
+        stepNumber: 2,
+        title: 'DISCOM Digital Mapping',
+        description: 'TSSPDCL or TSNPDCL links your consumer account and applies the Gruha Jyothi zero-bill tariff automatically.',
+        portalOrOffice: 'DISCOM Billing System'
+      },
+      {
+        stepNumber: 3,
+        title: 'Monthly Zero Bill Generation',
+        description: 'When meter reader takes monthly reading below 200 units, a net ₹0 bill is issued on the spot.',
+        portalOrOffice: 'Doorstep Spot Billing'
+      }
+    ],
+    officialSource: {
+      name: 'Energy Department, Government of Telangana',
+      url: 'https://telangana.gov.in',
+      lastVerifiedDate: 'October 2026',
+      department: 'Energy Department & TGDISCOMs (TSSPDCL / TSNPDCL)',
+      helpline: '1912',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official scheme guidelines issued by Energy Department, Telangana.'
+    }
+  },
+
+  // =========================================================================
+  // TAMIL NADU STATE GOVERNMENT SCHEMES (TN)
+  // =========================================================================
+  {
+    id: 'tn-kmut-women-basic-income',
+    name: 'Kalaignar Magalir Urimai Thittam (KMUT — Women\'s Basic Income Scheme)',
+    tamilName: 'கலைஞர் மகளிர் உரிமைத் திட்டம் (KMUT)',
+    hindiName: 'कलैग्नार महिला अधिकार योजना (तमिलनाडु महिला मूल आय योजना)',
+    teluguName: 'కలైంజర్ మగళిర్ ఉరిమై తిట్టం (మహిళల ప్రాథమిక ఆదాయ పథకం)',
+    tagline: 'Monthly basic income grant of ₹1,000 directly transferred via DBT to female heads of low-income families.',
+    category: 'women',
+    categoryLabel: 'Women & Child Development',
+    governmentLevel: 'state',
+    stateCode: 'TN',
+    administeringGovernment: 'Government of Tamil Nadu',
+    schemeStatus: 'active',
+    languages: ['en', 'ta'],
+    geographicScope: 'State Scheme (Tamil Nadu)',
+    stateApplicability: 'Tamil Nadu',
+    isCentral: false,
+    lifeStage: 'parent',
+    beneficiaries: ['Female Heads of Households in Tamil Nadu', 'Low-Income Women', 'Single Mothers and Widows'],
+    shortSummary: 'Direct monthly financial assistance of ₹1,000 (₹12,000 per year) credited directly into the bank accounts of over 1.15 crore eligible women heads of families across Tamil Nadu.',
+    fullDescription: 'Kalaignar Magalir Urimai Thittam is a historic rights-based social welfare program implemented by the Government of Tamil Nadu. Recognizing the uncompensated domestic and care labor performed by women, it provides unconditional basic income support to enhance women\'s autonomy, nutrition, and financial decision-making power.',
+    financialBenefit: '₹1,000 / month (₹12,000 / year) directly credited into woman\'s bank account via DBT',
+    keyObjectives: [
+      'Recognize and compensate women\'s unpaid household and caregiving labor',
+      'Provide predictable basic income to improve female nutritional and health outcomes',
+      'Foster financial inclusion and poverty reduction across Tamil Nadu households'
+    ],
+    eligibilityRules: {
+      minAge: 21,
+      targetGender: 'female',
+      maxIncome: 250000,
+      stateResidence: 'Tamil Nadu',
+      notes: 'Woman head of household aged 21 or older. Annual family income < ₹2.5 Lakhs; domestic electricity usage < 3,600 units/year; family landholding < 5 acres wetland or < 10 acres dryland.'
+    },
+    eligibilityHighlights: [
+      'Female head of family aged 21 years or older',
+      'Resident of Tamil Nadu with Smart Family Card (Ration Card)',
+      'Annual household income below ₹2,50,000',
+      'Electricity consumption under 3,600 units per year'
+    ],
+    exclusions: [
+      'Government employees (Central/State, PSUs, local bodies) and pensioners',
+      'Elected representatives (MLAs, MPs, ward councillors)',
+      'Income tax assessees and professional tax payers',
+      'Owners of four-wheelers (cars/SUVs, excluding commercial transport drivers)'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tn-kmut-smartcard',
+        name: 'Tamil Nadu Smart Family Card (Ration Card)',
+        category: 'identity',
+        purpose: 'Proof of family head status and household address',
+        citizenTip: 'Woman applicant should be registered as head of family or designated female elder.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-kmut-aadhaar',
+        name: 'Aadhaar Card of Woman Applicant',
+        category: 'identity',
+        purpose: 'Biometric identification and eKYC verification',
+        citizenTip: 'Check that Aadhaar has active phone link for verification alerts.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-kmut-bank',
+        name: 'Aadhaar-Seeded Bank Passbook (Individual Account)',
+        category: 'bank',
+        purpose: 'Direct Benefit Transfer (DBT) credit destination',
+        citizenTip: 'Single bank account in applicant\'s own name is required; joint accounts are not accepted.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-kmut-eb',
+        name: 'Electricity Consumer Card / Recent EB Bill',
+        category: 'other',
+        purpose: 'Verification of annual consumption (<3,600 units/year)',
+        citizenTip: 'Available on TANGEDCO portal using consumer number.',
+        isMandatory: true
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Special Camp Enrollment / e-Sevai Centre',
+        description: 'Submit biometric application at designated ward/village camps or government e-Sevai centre.',
+        portalOrOffice: 'Special Village Camp / e-Sevai'
+      },
+      {
+        stepNumber: 2,
+        title: 'Field Inspection and Income Verification',
+        description: 'Revenue department and Village Administrative Officers (VAO) verify land, electricity, and vehicle records digitally.',
+        portalOrOffice: 'Revenue Department'
+      },
+      {
+        stepNumber: 3,
+        title: 'Monthly DBT Credit on the 15th',
+        description: 'Approved beneficiaries receive ₹1,000 credited directly into their bank account on the 15th of every month.',
+        portalOrOffice: 'Direct Bank Account'
+      }
+    ],
+    officialSource: {
+      name: 'Special Programme Implementation Department, Government of Tamil Nadu',
+      url: 'https://kmut.tn.gov.in',
+      lastVerifiedDate: 'October 2026',
+      department: 'Special Programme Implementation & Revenue Department',
+      helpline: '044-2561-9208',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official KMUT verification portal by Government of Tamil Nadu.'
+    }
+  },
+  {
+    id: 'tn-pudhumai-penn',
+    name: 'Moovalur Ramamirtham Ammaiyar Higher Education Assurance (Pudhumai Penn)',
+    tamilName: 'மூவலூர் ராமாமிர்தம் அம்மையார் புதுமைப் பெண் திட்டம்',
+    hindiName: 'पुदुमई पेन योजना (उच्च शिक्षा प्रोत्साहन)',
+    teluguName: 'పుదుమై పెణ్ పథకం (ఉన్నత విద్యా ప్రోత్సాహం)',
+    tagline: 'Monthly financial assistance of ₹1,000 for girl students from government schools pursuing higher education.',
+    category: 'education',
+    categoryLabel: 'Education & Scholarships',
+    governmentLevel: 'state',
+    stateCode: 'TN',
+    administeringGovernment: 'Government of Tamil Nadu',
+    schemeStatus: 'active',
+    languages: ['en', 'ta'],
+    geographicScope: 'State Scheme (Tamil Nadu)',
+    stateApplicability: 'Tamil Nadu',
+    isCentral: false,
+    lifeStage: 'student',
+    beneficiaries: ['Girl Students in Tamil Nadu', 'Government School Alumnae', 'College & Diploma Undergraduates'],
+    shortSummary: 'Direct financial transfer of ₹1,000 per month (₹12,000/year) into student bank accounts for girl students who studied Classes 6 to 12 in government schools until they complete their undergraduate degree or diploma.',
+    fullDescription: 'The Pudhumai Penn scheme is a trailblazing education incentive implemented by the Government of Tamil Nadu. It aims to eliminate female student dropouts after Class 12, curb child marriages, and promote higher education enrollment among girls from low-income backgrounds by providing ₹1,000 cash monthly directly to the student.',
+    financialBenefit: '₹1,000 / month (₹12,000 / year) throughout undergraduate degree / diploma / ITI course',
+    keyObjectives: [
+      'Dramatically increase the Gross Enrollment Ratio (GER) of girl students in higher education',
+      'Eliminate economic barriers forcing female students to drop out after school',
+      'Prevent child marriage by supporting young women until university graduation'
+    ],
+    eligibilityRules: {
+      targetGender: 'female',
+      stateResidence: 'Tamil Nadu',
+      notes: 'Must have studied continuously from Class 6 to 12 in Tamil Nadu Government schools (or recognized government corporation/municipal/tribal welfare schools) and enrolled in a recognized UG degree, polytechnic diploma, or ITI course.'
+    },
+    eligibilityHighlights: [
+      'Female student resident in Tamil Nadu',
+      'Studied in Tamil Nadu Government schools from Class 6 to 12',
+      'Currently enrolled in recognized undergraduate course (BA, BSc, BCom, BE, MBBS, LLB, Polytechnic, ITI)',
+      'Direct monthly DBT transfer into student\'s individual bank account'
+    ],
+    exclusions: [
+      'Students who studied Class 6-12 in private schools without RTE sponsorship',
+      'Students pursuing distance-education or correspondence courses without regular college enrollment'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tn-penn-bonafide',
+        name: 'School Study Certificate (EMIS Number Classes 6–12)',
+        category: 'academic',
+        purpose: 'Proof of government schooling from Class 6 to 12 via EMIS database',
+        citizenTip: 'School Education Department EMIS ID automatically verifies study history.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-penn-college',
+        name: 'College Admission Bonafide Certificate',
+        category: 'academic',
+        purpose: 'Proof of active regular enrollment in recognized college or diploma institution',
+        citizenTip: 'Get signed bonafide form from your college principal or nodal officer.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-penn-aadhaar',
+        name: 'Aadhaar Card of Student',
+        category: 'identity',
+        purpose: 'Identity verification and biometric KYC authentication',
+        citizenTip: 'Student name must match college records.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-penn-bank',
+        name: 'Student\'s Individual Bank Account Passbook',
+        category: 'bank',
+        purpose: 'DBT credit of monthly ₹1,000 assistance',
+        citizenTip: 'Must be an individual account in the student\'s name with NPCI mapper enabled.',
+        isMandatory: true
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Online Application on Pudhumai Penn Portal',
+        description: 'Apply on pudhumaipenn.tn.gov.in through your college\'s designated nodal officer using your school EMIS ID.',
+        portalOrOffice: 'pudhumaipenn.tn.gov.in / College Helpdesk'
+      },
+      {
+        stepNumber: 2,
+        title: 'College and School Education Department Verification',
+        description: 'College Principal and District Social Welfare Officer verify EMIS school records and college admission.',
+        portalOrOffice: 'District Social Welfare Office'
+      },
+      {
+        stepNumber: 3,
+        title: 'Monthly Cash Credit of ₹1,000',
+        description: 'Assistance of ₹1,000 is transferred directly via DBT into the student\'s account every month until graduation.',
+        portalOrOffice: 'Student Bank Account'
+      }
+    ],
+    officialSource: {
+      name: 'Social Welfare & Women Empowerment Department, Government of Tamil Nadu',
+      url: 'https://pudhumaipenn.tn.gov.in',
+      lastVerifiedDate: 'October 2026',
+      department: 'Social Welfare & Women Empowerment Department',
+      helpline: '044-2567-0740',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official higher education assurance portal by Government of Tamil Nadu.'
+    }
+  },
+  {
+    id: 'tn-cmchis-health',
+    name: 'Chief Minister\'s Comprehensive Health Insurance Scheme (CMCHIS — Tamil Nadu)',
+    tamilName: 'முதலமைச்சரின் விரிவான மருத்துவக் காப்பீட்டுத் திட்டம் (CMCHIS)',
+    hindiName: 'मुख्यमंत्री समग्र स्वास्थ्य बीमा योजना (तमिलनाडु)',
+    teluguName: 'ముఖ్యమంత్రి సమగ్ర ఆరోగ్య బీమా పథకం (తమిళనాడు)',
+    tagline: 'Cashless hospitalization coverage up to ₹5 Lakhs per family per year across 1,090+ procedures.',
+    category: 'healthcare',
+    categoryLabel: 'Healthcare & Wellness',
+    governmentLevel: 'state',
+    stateCode: 'TN',
+    administeringGovernment: 'Government of Tamil Nadu',
+    schemeStatus: 'active',
+    languages: ['en', 'ta'],
+    geographicScope: 'State Scheme (Tamil Nadu)',
+    stateApplicability: 'Tamil Nadu',
+    isCentral: false,
+    lifeStage: 'all',
+    beneficiaries: ['Low-Income Families of Tamil Nadu', 'Smart Ration Card Holders', 'Organ Transplant & Dialysis Patients'],
+    shortSummary: 'Cashless hospitalization coverage up to ₹5,00,000 per family per year across 1,090 medical procedures, 52 diagnostic tests, and specialized procedures like organ transplants.',
+    fullDescription: 'CMCHIS is Tamil Nadu\'s flagship universal healthcare program, providing poor and vulnerable families with access to quality medical and surgical care in over 1,600 empanelled government and private healthcare facilities. The scheme covers diagnostics, surgery, intensive care, medicines, and post-discharge consultations.',
+    financialBenefit: 'Up to ₹5,00,000 (₹5 Lakhs) cashless hospitalization per family / year (1,090+ procedures)',
+    keyObjectives: [
+      'Provide cashless hospital care for secondary and tertiary illnesses',
+      'Shield vulnerable families from catastrophic health-related debts',
+      'Empanel premier private and government medical colleges across Tamil Nadu'
+    ],
+    eligibilityRules: {
+      maxIncome: 120000,
+      isBPLRequired: true,
+      stateResidence: 'Tamil Nadu',
+      notes: 'Family annual income must be ≤₹1,20,000 as certified by revenue authority, or family must hold an Antyodaya Anna Yojana (AAY) or priority Smart Family Card in Tamil Nadu.'
+    },
+    eligibilityHighlights: [
+      'Resident family in Tamil Nadu',
+      'Possession of active Tamil Nadu Smart Family Card (Ration Card)',
+      'Family annual income less than or equal to ₹1,20,000',
+      'Covers pre-existing illnesses from day one without waiting period'
+    ],
+    exclusions: [
+      'Families with annual income exceeding ₹1,20,000 without priority card',
+      'Non-medical aesthetic surgery, unapproved experimental therapies'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tn-cmchis-smartcard',
+        name: 'Tamil Nadu Smart Family Card',
+        category: 'identity',
+        purpose: 'Proof of family residency and BPL status',
+        citizenTip: 'Check that all family members requiring coverage are listed on the smart card.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-cmchis-income',
+        name: 'Income Certificate from Revenue Department (VAO / Tehsildar)',
+        category: 'income',
+        purpose: 'Proof of family income ≤₹1,20,000 per year',
+        citizenTip: 'Obtain digital barcoded income certificate from e-Sevai centre.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-cmchis-aadhaar',
+        name: 'Aadhaar Cards of All Family Members',
+        category: 'identity',
+        purpose: 'Biometric patient verification at hospital kiosk',
+        citizenTip: 'Aadhaar check confirms identity during admission and discharge.',
+        isMandatory: true
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Enroll at District Collectorate Kiosk / e-Sevai',
+        description: 'Submit Smart Family Card, Income Certificate, and Aadhaar at the CMCHIS kiosk located at your District Collectorate.',
+        portalOrOffice: 'District Collectorate CMCHIS Centre'
+      },
+      {
+        stepNumber: 2,
+        title: 'Biometric CMCHIS Smart Card Issuance',
+        description: 'Photo and biometric data of all family members are captured, and a CMCHIS Smart Health Card with URN is issued.',
+        portalOrOffice: 'CMCHIS Enrollment Centre'
+      },
+      {
+        stepNumber: 3,
+        title: 'Cashless Admission at Network Hospital',
+        description: 'Present the card or URN at any empaneled hospital\'s CMCHIS helpdesk to obtain immediate pre-authorization and free care.',
+        portalOrOffice: 'Network Hospital Kiosk'
+      }
+    ],
+    officialSource: {
+      name: 'Tamil Nadu Health Systems Project, Department of Health',
+      url: 'https://cmchistn.com',
+      lastVerifiedDate: 'October 2026',
+      department: 'Department of Health and Family Welfare, Government of Tamil Nadu',
+      helpline: '1800-425-3993',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official CMCHIS portal operated by Government of Tamil Nadu & UIIC.'
+    }
+  },
+  {
+    id: 'tn-differently-abled-pension',
+    name: 'Tamil Nadu Differently Abled Welfare Maintenance Allowance & Pension',
+    tamilName: 'மாற்றுத்திறனாளிகள் பராமரிப்பு உதவித்தொகை திட்டம்',
+    hindiName: 'तमिलनाडु दिव्यांगजन भरण-पोषण भत्ता योजना',
+    teluguName: 'తమిళనాడు దివ్యాంగుల నిర్వహణ భత్యం మరియు పెన్షన్',
+    tagline: 'Monthly financial maintenance allowance of ₹2,000 for severely differently-abled persons.',
+    category: 'disability-pwd',
+    categoryLabel: 'Persons with Disabilities',
+    governmentLevel: 'state',
+    stateCode: 'TN',
+    administeringGovernment: 'Government of Tamil Nadu',
+    schemeStatus: 'active',
+    languages: ['en', 'ta'],
+    geographicScope: 'State Scheme (Tamil Nadu)',
+    stateApplicability: 'Tamil Nadu',
+    isCentral: false,
+    lifeStage: 'all',
+    beneficiaries: ['Differently Abled Persons of Tamil Nadu', 'Severely Disabled Individuals (60%+)', 'Persons with Intellectual Disability'],
+    shortSummary: 'Monthly maintenance assistance of ₹2,000 per month deposited directly via DBT into the bank accounts of severely differently-abled individuals to cover medical and basic living costs.',
+    fullDescription: 'The Tamil Nadu Welfare Maintenance Allowance Scheme is a vital statutory security provision administered by the Directorate for Welfare of the Differently Abled. It ensures regular financial aid for citizens suffering from locomotor disability, cerebral palsy, visual impairment, intellectual disability, and muscular dystrophy.',
+    financialBenefit: '₹2,000 / month directly credited into beneficiary bank account via DBT',
+    keyObjectives: [
+      'Provide monthly living assistance to disabled individuals unable to earn a livelihood',
+      'Cover ongoing therapy, medical, and personal caregiving expenses',
+      'Promote dignity and social inclusion for families with special-needs dependents'
+    ],
+    eligibilityRules: {
+      minDisabilityPercentage: 60,
+      requiresUDID: true,
+      stateResidence: 'Tamil Nadu',
+      notes: 'Certified disability of 60% or above (or any percentage for severe intellectual/developmental disability) assessed by authorized District Medical Board. Resident of Tamil Nadu.'
+    },
+    eligibilityHighlights: [
+      'Certified differently-abled person residing in Tamil Nadu',
+      'Minimum 60% disability certified by District Medical Board (or mental retardation/cerebral palsy)',
+      'Possession of Unique Disability ID (UDID) or National Disability Identity Card',
+      'Aadhaar-seeded bank account'
+    ],
+    exclusions: [
+      'Persons in regular government employment',
+      'Beneficiaries currently drawing other state pensions exceeding this allowance'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tn-pwd-udid',
+        name: 'UDID Smart Card / State Disability Medical Certificate',
+        category: 'disability',
+        purpose: 'Proof of certified disability percentage (≥60%) and condition',
+        citizenTip: 'Medical board assessment from government district hospital is required.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-pwd-ration',
+        name: 'Tamil Nadu Smart Family Card (Ration Card)',
+        category: 'identity',
+        purpose: 'Proof of residence and family background in Tamil Nadu',
+        citizenTip: 'Check that beneficiary name is registered on the smart card.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-pwd-aadhaar',
+        name: 'Aadhaar Card of Differently Abled Beneficiary',
+        category: 'identity',
+        purpose: 'Biometric identity verification and DBT routing',
+        citizenTip: 'If biometric authentication is challenging, face-RD or guardian auth is permitted.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-pwd-bank',
+        name: 'Aadhaar-Seeded Bank Passbook (or Post Office Account)',
+        category: 'bank',
+        purpose: 'Direct Benefit Transfer (DBT) credit destination',
+        citizenTip: 'Joint account with legal guardian is permitted for minor or intellectually challenged persons.',
+        isMandatory: true
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Submit Application to District Differently Abled Welfare Officer (DDAWO)',
+        description: 'Submit prescribed application form along with UDID card and bank passbook at the District Collectorate DDAWO office or local e-Sevai.',
+        portalOrOffice: 'DDAWO Office / e-Sevai Centre'
+      },
+      {
+        stepNumber: 2,
+        title: 'District Medical Board Verification',
+        description: 'Verification of disability medical records and residential inspection by field welfare staff.',
+        portalOrOffice: 'District Medical Board'
+      },
+      {
+        stepNumber: 3,
+        title: 'Sanction and Monthly Pension Release',
+        description: 'DDAWO issues sanction order; monthly maintenance grant of ₹2,000 is released via DBT directly into bank account.',
+        portalOrOffice: 'Direct Bank Account'
+      }
+    ],
+    officialSource: {
+      name: 'Welfare of Differently Abled Persons Department, Government of Tamil Nadu',
+      url: 'https://scd.tn.gov.in',
+      lastVerifiedDate: 'October 2026',
+      department: 'Welfare of Differently Abled Persons Department',
+      helpline: '044-2841-9686',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official disability welfare portal by Government of Tamil Nadu.'
+    }
+  },
+  {
+    id: 'tn-naan-mudhalvan',
+    name: 'Naan Mudhalvan Skill Development and Career Guidance Scheme',
+    tamilName: 'நான் முதல்வன் திட்டம் (திறன் மேம்பாடு & வேலைவாய்ப்பு)',
+    hindiName: 'नान मुधलवन कौशल विकास योजना',
+    teluguName: 'నాన్ ముదల్వన్ నైపుణ్యాభివృద్ధి పథకం',
+    tagline: 'Free industry-aligned technical training, certifications in AI/data, and campus placement drives.',
+    category: 'unemployment-skills',
+    categoryLabel: 'Unemployment & Skills',
+    governmentLevel: 'state',
+    stateCode: 'TN',
+    administeringGovernment: 'Government of Tamil Nadu',
+    schemeStatus: 'active',
+    languages: ['en', 'ta'],
+    geographicScope: 'State Scheme (Tamil Nadu)',
+    stateApplicability: 'Tamil Nadu',
+    isCentral: false,
+    lifeStage: 'student',
+    beneficiaries: ['College Students in Tamil Nadu', 'Engineering & Arts Graduates', 'Polytechnic Diploma Students'],
+    shortSummary: 'Comprehensive skilling curriculum integrated into college degrees, offering free courses and certifications in emerging technologies (AI, cloud computing, robotics, advanced manufacturing) with direct placement drives.',
+    fullDescription: 'Naan Mudhalvan is an umbrella skill-enhancement and career-guidance initiative launched by the Government of Tamil Nadu. Implemented through the Tamil Nadu Skill Development Corporation (TNSDC), it equips over 10 lakh college students annually with high-demand technical and soft skills, partnering with leading multinational tech companies.',
+    financialBenefit: '100% Free Industry Certifications, Upskilling Courses & Direct Campus Placement Drives',
+    keyObjectives: [
+      'Bridge the industry-academia skill gap for engineering, polytechnic, and arts students',
+      'Provide free certifications in high-demand technologies (AI, cybersecurity, cloud, EV technology)',
+      'Connect students from rural and underprivileged colleges with top multinational recruiters'
+    ],
+    eligibilityRules: {
+      stateResidence: 'Tamil Nadu',
+      educationLevel: ['Undergraduate Student', 'Engineering', 'Arts & Science', 'Polytechnic Diploma', 'ITI'],
+      notes: 'Enrolled in any recognized government or government-aided arts, science, engineering, or polytechnic institution in Tamil Nadu.'
+    },
+    eligibilityHighlights: [
+      'College student currently enrolled in higher education in Tamil Nadu',
+      'Government and government-aided colleges, universities, and polytechnics',
+      'Access to curated online courses, laboratory sessions, and hackathons',
+      'Direct interview access to corporate recruitment drives'
+    ],
+    exclusions: [
+      'Non-students or working professionals not enrolled in accredited colleges'
+    ],
+    requiredDocuments: [
+      {
+        id: 'doc-tn-naan-college',
+        name: 'College Student ID Card & Roll Number',
+        category: 'academic',
+        purpose: 'Verification of active college enrollment and course year',
+        citizenTip: 'Use your institutional college email or student roll number for portal login.',
+        isMandatory: true
+      },
+      {
+        id: 'doc-tn-naan-aadhaar',
+        name: 'Aadhaar Card of Student',
+        category: 'identity',
+        purpose: 'Identity verification and digital skill certificate authentication',
+        citizenTip: 'Aadhaar linkage enables verified digital badge generation upon course completion.',
+        isMandatory: true
+      }
+    ],
+    applicationSteps: [
+      {
+        stepNumber: 1,
+        title: 'Register on Naan Mudhalvan Portal',
+        description: 'Login to naanmudhalvan.tn.gov.in using your college student ID and institution code.',
+        portalOrOffice: 'naanmudhalvan.tn.gov.in'
+      },
+      {
+        stepNumber: 2,
+        title: 'Select Skill Track and Complete Modules',
+        description: 'Choose your desired specialization (e.g., Data Analytics, Robotics, Cloud Computing) and complete interactive coursework.',
+        portalOrOffice: 'Online Learning Platform'
+      },
+      {
+        stepNumber: 3,
+        title: 'Certification and Placement Drive Access',
+        description: 'Earn industry-recognized certification and participate in state-sponsored campus placement fairs.',
+        portalOrOffice: 'Campus Placement Drive'
+      }
+    ],
+    officialSource: {
+      name: 'Tamil Nadu Skill Development Corporation (TNSDC)',
+      url: 'https://naanmudhalvan.tn.gov.in',
+      lastVerifiedDate: 'October 2026',
+      department: 'Special Programme Implementation Department & TNSDC',
+      helpline: '044-2250-1002',
+      verificationStatus: 'verified',
+      linkStatus: 'accessible',
+      verificationNotes: 'Official skill enhancement portal by Government of Tamil Nadu.'
+    }
   }
 ];
 
@@ -2791,9 +3947,11 @@ export const CATEGORIES_CONFIG = [
 ];
 
 export const STATES_CONFIG = [
-  { id: 'all', label: 'All India & Central' },
-  { id: 'Andhra Pradesh', label: 'Andhra Pradesh (State + Central)' },
-  { id: 'Central', label: 'Central Government Only' }
+  { id: 'all', label: 'All India & All Governments' },
+  { id: 'central', label: 'Central Government of India' },
+  { id: 'Andhra Pradesh', label: 'Andhra Pradesh State Government' },
+  { id: 'Telangana', label: 'Telangana State Government' },
+  { id: 'Tamil Nadu', label: 'Tamil Nadu State Government' }
 ];
 
 export const CATEGORIES = CATEGORIES_CONFIG;

@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { SCHEMES, CATEGORIES } from '../data/schemes';
 import { useLanguage } from '../context/LanguageContext';
+import { GovernmentSectionNav } from '../components/schemes/GovernmentSectionNav';
 
 export const LandingPage = () => {
   const { t, language } = useLanguage();
@@ -236,34 +237,48 @@ export const LandingPage = () => {
 
                 {/* Popular Search Suggestions */}
                 <div className="pt-2.5 flex flex-wrap items-center gap-1.5 text-xs text-[#565C56] dark:text-[#A3ACA5]">
-                  <span className="font-mono text-[11px] font-semibold text-[#858D85] dark:text-[#737D75]">Try:</span>
+                  <span className="font-mono text-[11px] font-semibold text-[#858D85] dark:text-[#737D75]">Portals:</span>
                   <button
                     type="button"
-                    onClick={() => navigate('/schemes?category=disability')}
-                    className="px-2 py-0.5 rounded bg-[#EFE8DE] dark:bg-[#232A25] hover:bg-[#E2D8C9] dark:hover:bg-[#2C352F] text-[11px] transition-colors"
+                    onClick={() => navigate('/schemes/central')}
+                    className="px-2 py-0.5 rounded bg-[#FAF3E2] dark:bg-[#252219] hover:bg-[#EFE4CF] text-[11px] font-semibold text-[#A07A18] dark:text-[#DFB24E] border border-[#E0D0AB] dark:border-[#383220] transition-colors"
                   >
-                    Disability Pension
+                    Central (25)
                   </button>
                   <button
                     type="button"
-                    onClick={() => navigate('/schemes?state=ap')}
-                    className="px-2 py-0.5 rounded bg-[#EFE8DE] dark:bg-[#232A25] hover:bg-[#E2D8C9] dark:hover:bg-[#2C352F] text-[11px] font-semibold text-[#B95938] dark:text-[#DFB24E] transition-colors"
+                    onClick={() => navigate('/schemes/andhra-pradesh')}
+                    className="px-2 py-0.5 rounded bg-[#EBF2ED] dark:bg-[#1A2E22] hover:bg-[#DDE9E0] text-[11px] font-semibold text-[#1A3B2B] dark:text-[#7A9984] border border-[#C5DAC9] dark:border-[#253D30] transition-colors"
                   >
                     Andhra Pradesh (4)
                   </button>
                   <button
                     type="button"
-                    onClick={() => navigate('/schemes?category=farmers')}
-                    className="px-2 py-0.5 rounded bg-[#EFE8DE] dark:bg-[#232A25] hover:bg-[#E2D8C9] dark:hover:bg-[#2C352F] text-[11px] transition-colors"
+                    onClick={() => navigate('/schemes/telangana')}
+                    className="px-2 py-0.5 rounded bg-[#EBF2ED] dark:bg-[#1A2E22] hover:bg-[#DDE9E0] text-[11px] font-semibold text-[#1A3B2B] dark:text-[#7A9984] border border-[#C5DAC9] dark:border-[#253D30] transition-colors"
                   >
-                    Farmer Support
+                    Telangana (5)
                   </button>
                   <button
                     type="button"
-                    onClick={() => navigate('/schemes?category=housing')}
+                    onClick={() => navigate('/schemes/tamil-nadu')}
+                    className="px-2 py-0.5 rounded bg-[#EBF2ED] dark:bg-[#1A2E22] hover:bg-[#DDE9E0] text-[11px] font-semibold text-[#1A3B2B] dark:text-[#7A9984] border border-[#C5DAC9] dark:border-[#253D30] transition-colors"
+                  >
+                    Tamil Nadu (5)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/schemes?category=disability')}
                     className="px-2 py-0.5 rounded bg-[#EFE8DE] dark:bg-[#232A25] hover:bg-[#E2D8C9] dark:hover:bg-[#2C352F] text-[11px] transition-colors"
                   >
-                    Rooftop Solar
+                    Disability
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/schemes?category=agriculture')}
+                    className="px-2 py-0.5 rounded bg-[#EFE8DE] dark:bg-[#232A25] hover:bg-[#E2D8C9] dark:hover:bg-[#2C352F] text-[11px] transition-colors"
+                  >
+                    Farmers
                   </button>
                 </div>
               </form>
@@ -401,6 +416,13 @@ export const LandingPage = () => {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* 1.5 EXPLORE GOVERNMENT SCHEMES (CENTRAL & STATES) */}
+      <section className="py-12 bg-white dark:bg-[#181D1A] border-b border-[#E7DFD4] dark:border-[#232A25]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <GovernmentSectionNav showAllLink={true} />
         </div>
       </section>
 

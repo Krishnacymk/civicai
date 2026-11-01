@@ -1,3 +1,5 @@
+import type { GovernmentLevel, StateCode } from './government';
+
 export type SchemeCategory = 
   | 'agriculture'
   | 'education'
@@ -13,6 +15,8 @@ export type SchemeCategory =
   | 'workers-social-security'
   | 'seniors-elderly'
   | 'low-income-welfare';
+
+export type SchemeOperationalStatus = 'active' | 'closed' | 'upcoming' | 'needs-verification';
 
 export interface RequiredDocument {
   id: string;
@@ -35,7 +39,7 @@ export interface EligibilityRule {
   notes: string;
   minDisabilityPercentage?: number; // For PwD schemes (e.g. 40, 80)
   requiresUDID?: boolean;
-  stateResidence?: 'All India' | 'Andhra Pradesh';
+  stateResidence?: 'All India' | 'Andhra Pradesh' | 'Telangana' | 'Tamil Nadu';
   educationLevel?: string[];
   employmentStatus?: string[];
 }
@@ -70,9 +74,20 @@ export interface Scheme {
   tagline: string;
   category: SchemeCategory;
   categoryLabel: string;
-  geographicScope: 'Central (All India)' | 'Central & State Partnership' | 'Rural India' | 'Urban & Rural' | 'State Scheme (Andhra Pradesh)';
-  stateApplicability: 'All India' | 'Andhra Pradesh';
+
+  // Government & Geographic Classification
+  governmentLevel: GovernmentLevel;
+  stateCode: StateCode | null;
+  administeringGovernment: string;
+  schemeStatus: SchemeOperationalStatus;
+  languages?: string[];
+  sourceNotes?: string;
+
+  // Backward compatibility fields
+  geographicScope: 'Central (All India)' | 'Central & State Partnership' | 'Rural India' | 'Urban & Rural' | 'State Scheme (Andhra Pradesh)' | 'State Scheme (Telangana)' | 'State Scheme (Tamil Nadu)';
+  stateApplicability: 'All India' | 'Andhra Pradesh' | 'Telangana' | 'Tamil Nadu';
   isCentral: boolean;
+
   beneficiaries: string[];
   shortSummary: string;
   fullDescription: string;
@@ -87,3 +102,4 @@ export interface Scheme {
   badge?: string;
   lifeStage?: 'childhood' | 'student' | 'youth' | 'worker' | 'parent' | 'senior' | 'all';
 }
+

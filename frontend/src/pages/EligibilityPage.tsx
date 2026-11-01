@@ -31,7 +31,13 @@ export const EligibilityPage = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
 
   // Form State
-  const [targetState, setTargetState] = useState<string>('Andhra Pradesh');
+  const [targetState, setTargetState] = useState<string>(() => {
+    const s = searchParams.get('state')?.toLowerCase();
+    if (s === 'ap' || s === 'andhra-pradesh') return 'Andhra Pradesh';
+    if (s === 'tg' || s === 'telangana') return 'Telangana';
+    if (s === 'tn' || s === 'tamil-nadu') return 'Tamil Nadu';
+    return 'all';
+  });
   const [targetSchemeId, setTargetSchemeId] = useState<string>(preselectedSchemeId || 'all');
   const [occupation, setOccupation] = useState<string>('');
   const [age, setAge] = useState<string>('25');
@@ -56,6 +62,8 @@ export const EligibilityPage = () => {
     const isSeverePwD = disabilityStatus === 'pwd_80_severe';
     const isDialysis = disabilityStatus === 'chronic_dialysis';
     const isAP = targetState === 'Andhra Pradesh';
+    const isTG = targetState === 'Telangana';
+    const isTN = targetState === 'Tamil Nadu';
 
     const evaluatedSchemes = targetSchemeId === 'all'
       ? SCHEMES
@@ -66,14 +74,32 @@ export const EligibilityPage = () => {
       const unmet: string[] = [];
 
       // 1. State Jurisdiction Check
-      if (scheme.stateApplicability === 'Andhra Pradesh' && !isAP) {
-        unmet.push('Scheme is exclusively applicable to permanent residents of Andhra Pradesh.');
-      } else if (scheme.stateApplicability === 'Andhra Pradesh' && isAP) {
-        matched.push('Resident of Andhra Pradesh, matching state jurisdiction.');
+      if (scheme.governmentLevel === 'state') {
+        if (scheme.stateCode === 'AP') {
+          if (!isAP && targetState !== 'all') {
+            unmet.push('Scheme is exclusively applicable to permanent residents of Andhra Pradesh.');
+          } else {
+            matched.push('Resident of Andhra Pradesh, matching state jurisdiction.');
+          }
+        } else if (scheme.stateCode === 'TG') {
+          if (!isTG && targetState !== 'all') {
+            unmet.push('Scheme is exclusively applicable to permanent residents of Telangana.');
+          } else {
+            matched.push('Resident of Telangana, matching state jurisdiction.');
+          }
+        } else if (scheme.stateCode === 'TN') {
+          if (!isTN && targetState !== 'all') {
+            unmet.push('Scheme is exclusively applicable to permanent residents of Tamil Nadu.');
+          } else {
+            matched.push('Resident of Tamil Nadu, matching state jurisdiction.');
+          }
+        }
+      } else {
+        matched.push('Central Government scheme applicable across all Indian states and Union Territories.');
       }
 
       // 2. Government Employee Statutory Exclusion
-      if (isGov && (scheme.id === 'pm-kisan' || scheme.id === 'pmmvy' || scheme.id === 'pm-vishwakarma' || scheme.id === 'ap-thalliki-vandanam' || scheme.id === 'ap-annadata-sukhibhava')) {
+      if (isGov && (scheme.id === 'pm-kisan' || scheme.id === 'pmmvy' || scheme.id === 'pm-vishwakarma' || scheme.id === 'ap-thalliki-vandanam' || scheme.id === 'ap-annadata-sukhibhava' || scheme.id === 'tg-rythu-bharosa' || scheme.id === 'tn-kmut-women-basic-income')) {
         unmet.push('Disqualified: Government employees and regular public sector workers are statutory exclusions.');
       }
 
@@ -129,6 +155,14 @@ export const EligibilityPage = () => {
         }
       }
 
+      if (scheme.id === 'tn-differently-abled-pension') {
+        if (isPwD) {
+          matched.push('Holds certified benchmark disability (≥40%), qualifying for ₹1,500 - ₹2,000/month maintenance pension in Tamil Nadu.');
+        } else {
+          unmet.push('Requires certified disability certificate of 40% or above in Tamil Nadu.');
+        }
+      }
+
       // 6. Occupation & Sector Specific Checks
       if (scheme.id === 'pm-kisan' || scheme.id === 'pmfby-crop-insurance') {
         if (hasLand || occupation === 'Farmer' || occupation === 'Tenant Farmer') {
@@ -146,11 +180,69 @@ export const EligibilityPage = () => {
         }
       }
 
+      if (scheme.id === 'tg-rythu-bharosa') {
+        if (hasLand || occupation === 'Farmer' || occupation === 'Tenant Farmer') {
+          matched.push('Telangana farmer / landholder eligible for ₹15,000/acre annual Rythu Bharosa investment support.');
+        } else {
+          unmet.push('Requires cultivable land ownership (Pattadar passbook) or registered tenant cultivation in Telangana.');
+        }
+      }
+
       if (scheme.id === 'ap-thalliki-vandanam') {
         if (isAP && (occupation === 'Student' || occupation === 'Homemaker' || ageNum <= 18)) {
           matched.push('School/Intermediate student or mother eligible for ₹15,000 annual education grant.');
         } else {
           unmet.push('Requires child enrolled in Class 1 to 12 in Andhra Pradesh with 75% attendance.');
+        }
+      }
+
+      if (scheme.id === 'tg-aasara-cheyutha-pension') {
+        if (isSeverePwD || isPwD || ageNum >= 65 || isBplHousehold) {
+          matched.push('Eligible for Telangana Cheyutha / Aasara enhanced pension (₹4,016/month for seniors/widows, ₹6,016/month for PwD).');
+        } else {
+          unmet.push('Requires age 65+, benchmark disability, or BPL single woman / weaver / toddy tapper eligibility in Telangana.');
+        }
+      }
+
+      if (scheme.id === 'tg-mahalakshmi-scheme') {
+        if (gender === 'female') {
+          matched.push('Telangana resident woman: entitled to 100% free RTC bus travel statewide and eligible for monthly financial empowerment.');
+        } else {
+          unmet.push('Exclusively targeted to women and girls residing in Telangana.');
+        }
+      }
+
+      if (scheme.id === 'tg-gruha-jyothi') {
+        if (isBplHousehold || incomeRange === 'below_100k' || incomeRange === 'below_250k') {
+          matched.push('Domestic household with White Ration Card in Telangana: eligible for up to 200 units free monthly electricity.');
+        } else {
+          unmet.push('Requires domestic consumer electricity connection linked to White Ration Card in Telangana.');
+        }
+      }
+
+      if (scheme.id === 'tn-kmut-women-basic-income') {
+        if (gender === 'female' && (isBplHousehold || incomeRange === 'below_100k' || incomeRange === 'below_250k')) {
+          matched.push('Tamil Nadu woman head of family with Smart Ration Card: eligible for ₹1,000/month basic income right.');
+        } else if (gender !== 'female') {
+          unmet.push('Exclusively reserved for women heads of families in Tamil Nadu.');
+        } else {
+          unmet.push('Requires annual family income below ₹2.5 Lakh and smart family ration card in Tamil Nadu.');
+        }
+      }
+
+      if (scheme.id === 'tn-pudhumai-penn') {
+        if (gender === 'female' && (occupation === 'Student' || ageNum <= 25)) {
+          matched.push('Tamil Nadu female student pursuing higher education after Govt School (Classes 6-12): eligible for ₹1,000/month DBT.');
+        } else if (gender !== 'female') {
+          unmet.push('Scheme strictly reserved for female college/diploma students.');
+        } else {
+          unmet.push('Requires enrollment in recognized higher education after completing Classes 6-12 in Tamil Nadu government schools.');
+        }
+      }
+
+      if (scheme.id === 'tn-naan-mudhalvan') {
+        if (occupation === 'Student' || occupation === 'Unemployed' || ageNum <= 35) {
+          matched.push('Tamil Nadu youth/student eligible for high-impact industry skilling, AI/tech curriculum, and placement support.');
         }
       }
 
@@ -221,11 +313,11 @@ export const EligibilityPage = () => {
         }
       }
 
-      if (scheme.id === 'pm-jay' || scheme.id === 'ap-ntr-aarogyasri') {
+      if (scheme.id === 'pm-jay' || scheme.id === 'ap-ntr-aarogyasri' || scheme.id === 'tg-rajiv-aarogyasri' || scheme.id === 'tn-cmchis-health') {
         if (isBplHousehold || incomeRange === 'below_100k' || incomeRange === 'below_250k' || ageNum >= 70) {
-          matched.push('Eligible under vulnerable economic criteria / White Ration Card.');
+          matched.push('Eligible under state/central low-income criteria, White Ration Card, or universal senior tier.');
         } else {
-          unmet.push('Requires White Ration Card, SECC deprivation listing, or age 70+ for universal cover.');
+          unmet.push('Requires BPL / White Ration Card, low-income certification, or age 70+ for universal cover.');
         }
       }
 
@@ -290,7 +382,7 @@ export const EligibilityPage = () => {
             Personalized Eligibility Intelligence
           </h1>
           <p className="text-sm text-[#565C56] dark:text-[#A3ACA5] max-w-2xl leading-relaxed">
-            Answer a few quick questions to identify government schemes you may qualify for across Central and Andhra Pradesh state programs. No login required—your details are processed purely in your browser's local memory.
+            Answer a few quick questions to identify government schemes you may qualify for across Central Government, Andhra Pradesh, Telangana, and Tamil Nadu welfare programs. No login required—your details are processed purely in your browser's local memory.
           </p>
 
         </div>
@@ -357,7 +449,10 @@ export const EligibilityPage = () => {
                       onChange={e => setTargetState(e.target.value)}
                       className="w-full bg-[#FAF8F5] dark:bg-[#121614] border border-[#D5CABE] dark:border-[#2C352F] rounded-lg p-2.5 text-xs text-[#161815] dark:text-[#F3EFEA] focus:outline-none"
                     >
-                      <option value="Andhra Pradesh">Andhra Pradesh (Includes AP State + Central Welfare Schemes)</option>
+                      <option value="all">All India (Central Schemes + All State Catalogs)</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh (AP State + Central Welfare Schemes)</option>
+                      <option value="Telangana">Telangana (Telangana State + Central Welfare Schemes)</option>
+                      <option value="Tamil Nadu">Tamil Nadu (Tamil Nadu State + Central Welfare Schemes)</option>
                       <option value="Other">Other States & Union Territories (Central Government Schemes)</option>
                     </select>
                   </div>
@@ -749,12 +844,12 @@ export const EligibilityPage = () => {
                         </Link>
                       </span>
                       <span className={`px-2 py-0.5 font-mono text-[10px] rounded flex items-center gap-1 ${
-                        item.scheme.isCentral
-                          ? 'bg-[#EAE8E3] dark:bg-[#252826] text-[#424744] dark:text-[#C5CDC6]'
-                          : 'bg-[#FAF3E2] dark:bg-[#262015] text-[#8C6D1F] dark:text-[#DFB24E] font-semibold'
+                        item.scheme.governmentLevel === 'central'
+                          ? 'bg-[#FAF3E2] dark:bg-[#252219] text-[#A07A18] dark:text-[#DFB24E] border border-[#E0D0AB] dark:border-[#383220]'
+                          : 'bg-[#EBF2ED] dark:bg-[#1A2E22] text-[#1A3B2B] dark:text-[#7A9984] border border-[#C5DAC9] dark:border-[#253D30]'
                       }`}>
                         <Building2 className="w-2.5 h-2.5" />
-                        <span>{item.scheme.isCentral ? 'Central' : 'AP State'}</span>
+                        <span>{item.scheme.governmentLevel === 'central' ? 'Central' : (item.scheme.stateApplicability || 'State')}</span>
                       </span>
                     </div>
 
