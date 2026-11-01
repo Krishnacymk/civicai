@@ -301,10 +301,10 @@ export const SchemesPage = () => {
         
         {/* Prominent Government Navigation Area */}
         <div className="mb-10 bg-white dark:bg-[#181D1A] rounded-xl border border-[#D5CABE] dark:border-[#2C352F] p-5 shadow-xs">
-          <GovernmentSectionNav showAllLink={false} />
+          <GovernmentSectionNav showAllLink={true} />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div id="schemes-catalog" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Filter Sidebar */}
           <aside className="lg:col-span-3 space-y-6 bg-white dark:bg-[#181D1A] p-5 rounded-xl border border-[#D5CABE] dark:border-[#2C352F] shadow-xs sticky top-20">

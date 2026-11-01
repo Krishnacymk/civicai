@@ -23,15 +23,28 @@ function AnimatedRoutes() {
       <Routes location={location}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/schemes" element={<SchemesPage />} />
-        {GOVERNMENTS.map(gov => (
+
+        {/* 1. Canonical government jurisdiction routes */}
+        <Route path="/schemes/central" element={<GovernmentSchemesPage />} />
+        <Route path="/schemes/state/:govSlug" element={<GovernmentSchemesPage />} />
+        <Route path="/schemes/ut/:govSlug" element={<GovernmentSchemesPage />} />
+
+        {/* 2. Direct government slug routes for backward compatibility (e.g. /schemes/karnataka) */}
+        {GOVERNMENTS.filter(gov => gov.slug !== 'central').map(gov => (
           <Route key={gov.slug} path={`/schemes/${gov.slug}`} element={<GovernmentSchemesPage />} />
         ))}
+
+        {/* 3. Scheme detail route */}
         <Route path="/schemes/:id" element={<SchemeDetailPage />} />
+
+        {/* 4. Core feature pages */}
         <Route path="/assistant" element={<AssistantPage />} />
         <Route path="/eligibility" element={<EligibilityPage />} />
         <Route path="/checklist" element={<ChecklistPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
+
+        {/* 5. Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

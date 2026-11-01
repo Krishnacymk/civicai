@@ -686,7 +686,7 @@ export const GOVERNMENTS: GovernmentConfig[] = [
     hindiName: 'अंडमान और निकोबार प्रशासन',
     teluguName: 'అండమాన్ మరియు నికోబార్ పరిపాలన',
     tamilName: 'அந்தமான் நிக்கோபார் நிர்வாகம்',
-    level: 'state',
+    level: 'union-territory',
     jurisdictionType: 'union-territory',
     administrativeSetup: 'ut-without-legislature',
     stateCode: 'AN',
@@ -709,7 +709,7 @@ export const GOVERNMENTS: GovernmentConfig[] = [
     hindiName: 'चंडीगढ़ प्रशासन',
     teluguName: 'చండీగఢ్ పరిపాలన',
     tamilName: 'சண்டிகர் நிர்வாகம்',
-    level: 'state',
+    level: 'union-territory',
     jurisdictionType: 'union-territory',
     administrativeSetup: 'ut-without-legislature',
     stateCode: 'CH',
@@ -732,7 +732,7 @@ export const GOVERNMENTS: GovernmentConfig[] = [
     hindiName: 'दादरा और नगर हवेली और दमन और दीव प्रशासन',
     teluguName: 'దాద్రా నగర్ హవేలీ డామన్ డయ్యూ పరిపాలన',
     tamilName: 'தாத்ரா நகர் ஹவேலி தாமன் தியூ நிர்வாகம்',
-    level: 'state',
+    level: 'union-territory',
     jurisdictionType: 'union-territory',
     administrativeSetup: 'ut-without-legislature',
     stateCode: 'DH',
@@ -755,7 +755,7 @@ export const GOVERNMENTS: GovernmentConfig[] = [
     hindiName: 'दिल्ली राष्ट्रीय राजधानी क्षेत्र सरकार',
     teluguName: 'ఢిల్లీ ఎన్‌సిటి ప్రభుత్వం',
     tamilName: 'தில்லி அரசு',
-    level: 'state',
+    level: 'union-territory',
     jurisdictionType: 'union-territory',
     administrativeSetup: 'ut-with-legislature',
     stateCode: 'DL',
@@ -778,7 +778,7 @@ export const GOVERNMENTS: GovernmentConfig[] = [
     hindiName: 'जम्मू और कश्मीर सरकार',
     teluguName: 'జమ్మూ కాశ్మీర్ ప్రభుత్వం',
     tamilName: 'ஜம்மு காஷ்மீர் அரசு',
-    level: 'state',
+    level: 'union-territory',
     jurisdictionType: 'union-territory',
     administrativeSetup: 'ut-with-legislature',
     stateCode: 'JK',
@@ -801,7 +801,7 @@ export const GOVERNMENTS: GovernmentConfig[] = [
     hindiName: 'लद्दाख केंद्र शासित प्रदेश प्रशासन',
     teluguName: 'లడఖ్ కేంద్రపాలిత ప్రాంత పరిపాలన',
     tamilName: 'லடாக் யூனியன் பிரதேச நிர்வாகம்',
-    level: 'state',
+    level: 'union-territory',
     jurisdictionType: 'union-territory',
     administrativeSetup: 'ut-without-legislature',
     stateCode: 'LA',
@@ -824,7 +824,7 @@ export const GOVERNMENTS: GovernmentConfig[] = [
     hindiName: 'लक्षद्वीप प्रशासन',
     teluguName: 'లక్షద్వీప్ పరిపాలన',
     tamilName: 'லட்சத்தீவு நிர்வாகம்',
-    level: 'state',
+    level: 'union-territory',
     jurisdictionType: 'union-territory',
     administrativeSetup: 'ut-without-legislature',
     stateCode: 'LD',
@@ -847,7 +847,7 @@ export const GOVERNMENTS: GovernmentConfig[] = [
     hindiName: 'पुदुच्चेरी सरकार',
     teluguName: 'పుదుచ్చేరి ప్రభుత్వం',
     tamilName: 'புதுச்சேரி அரசு',
-    level: 'state',
+    level: 'union-territory',
     jurisdictionType: 'union-territory',
     administrativeSetup: 'ut-with-legislature',
     stateCode: 'PY',
@@ -899,4 +899,28 @@ export function getGovernmentByCode(code: string): GovernmentConfig | undefined 
 
 export function getGovernmentByStateCode(stateCode: string): GovernmentConfig | undefined {
   return getGovernmentByCode(stateCode);
+}
+
+/**
+ * Resolves the canonical internal route path for any government jurisdiction.
+ * Supports GovernmentConfig object or string (slug, id, or stateCode).
+ * Central: /schemes/central
+ * Union Territories: /schemes/ut/:slug
+ * States: /schemes/state/:slug
+ */
+export function getGovernmentPath(govOrSlug: GovernmentConfig | string): string {
+  let gov: GovernmentConfig | undefined;
+  if (typeof govOrSlug === 'object' && govOrSlug !== null) {
+    gov = govOrSlug;
+  } else if (typeof govOrSlug === 'string') {
+    gov = getGovernmentBySlug(govOrSlug) || getGovernmentByCode(govOrSlug) || getGovernmentById(govOrSlug);
+  }
+  if (!gov) return '/schemes';
+  if (gov.level === 'central' || gov.slug === 'central') {
+    return '/schemes/central';
+  }
+  if (gov.jurisdictionType === 'union-territory' || gov.level === 'union-territory') {
+    return `/schemes/ut/${gov.slug}`;
+  }
+  return `/schemes/state/${gov.slug}`;
 }
